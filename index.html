@@ -45,8 +45,12 @@ input,select,textarea,button{font-family:inherit}
 @keyframes fade-in-up{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
 @keyframes pulse-slow{0%,100%{opacity:1}50%{opacity:.5}}
 @keyframes bounce-slow{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes flow-arrow{0%{opacity:.4;transform:translateX(0)}50%{opacity:1;transform:translateX(6px)}100%{opacity:.4;transform:translateX(0)}}
+@keyframes stat-glow{0%,100%{opacity:.3;transform:scale(1)}50%{opacity:.5;transform:scale(1.05)}}
 .animate-fade-in-up{animation:fade-in-up .7s ease-out both}
 .animate-bounce-slow{animation:bounce-slow 2s ease-in-out infinite}
+.animate-flow{animation:flow-arrow 2s ease-in-out infinite}
+.animate-stat-glow{animation:stat-glow 4s ease-in-out infinite}
 #line-clamp-2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 :focus-visible{outline:2px solid #2BA3A0;outline-offset:2px}
 #navbar{position:fixed;top:0;left:0;right:0;z-index:100;transition:all .3s ease;background:transparent}
@@ -71,9 +75,6 @@ input,select,textarea,button{font-family:inherit}
 .form-input:focus{outline:none;border-color:#2BA3A0;box-shadow:0 0 0 3px rgba(43,163,160,.1)}
 .form-label{display:block;font-weight:500;font-size:.875rem;margin-bottom:6px;color:#1E2A38}
 .form-label .req{color:#FF7A59}
-.whatsapp-widget{position:fixed;bottom:24px;right:24px;z-index:90;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(37,211,102,.4);transition:all .3s}
-.whatsapp-widget:hover{transform:scale(1.1)}
-.whatsapp-widget::before{content:'';position:absolute;inset:-8px;border-radius:50%;border:2px solid #25D366;animation:pulse-slow 2s ease-in-out infinite}
 .badge{display:inline-block;padding:4px 12px;border-radius:9999px;font-size:.75rem;font-weight:600}
 .page-hero{padding-top:140px;padding-bottom:60px;background:linear-gradient(135deg,#2BA3A0 0%,#1F8582 100%);color:#fff;position:relative;overflow:hidden}
 .page-hero::before{content:'';position:absolute;top:-50%;right:-10%;width:600px;height:600px;background:rgba(255,255,255,.05);border-radius:50%}
@@ -92,6 +93,7 @@ input,select,textarea,button{font-family:inherit}
 .modal-backdrop{position:fixed;inset:0;background:rgba(15,26,20,.7);display:none;align-items:center;justify-content:center;z-index:9999;padding:20px;backdrop-filter:blur(8px)}
 .modal-backdrop.open{display:flex;animation:fade-in-up .3s}
 .modal{background:#fff;border-radius:24px;max-width:600px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.modal-wide{max-width:800px}
 .modal-header{display:flex;justify-content:space-between;align-items:center;padding:24px 32px;border-bottom:1px solid #E5ECEC;position:sticky;top:0;background:#fff;z-index:2;border-radius:24px 24px 0 0}
 .modal-header h3{font-family:'Montserrat';font-weight:700;font-size:1.4rem;color:#1E2A38;display:flex;align-items:center;gap:10px}
 .modal-close{background:#F7FAF8;width:36px;height:36px;border-radius:10px;font-size:1.2rem;color:#1E2A38;transition:.2s;display:grid;place-items:center;border:none;cursor:pointer}
@@ -162,8 +164,115 @@ input,select,textarea,button{font-family:inherit}
 .faq-item.open .faq-q span{transform:rotate(45deg)}
 .faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease;padding:0 22px;color:#3D4A41;font-size:.92rem}
 .faq-item.open .faq-a{max-height:300px;padding:0 22px 20px}
-@media(max-width:1024px){.nav-menu{position:absolute;top:100%;left:0;right:0;background:#fff;flex-direction:column;align-items:stretch;padding:18px;gap:4px;border-bottom:1px solid #E5ECEC;box-shadow:0 4px 14px rgba(30,42,56,.08);max-height:0;overflow:hidden;transition:max-height .4s ease}#navMenu.open{max-height:600px}#navMenu>li>a{padding:12px 14px !important;display:block}.menu-btn{display:block !important}.flagship-grid,.science-grid,.contact-grid,.program-modal-grid{grid-template-columns:1fr;gap:30px}.flagship-features{grid-template-columns:1fr}}
-@media(max-width:768px){.whatsapp-widget{width:50px;height:50px;bottom:16px;right:16px}.btn{padding:12px 20px;font-size:.875rem}.modal-body{padding:20px 24px 24px}.modal-header{padding:18px 24px}.timeline-card-item{flex-direction:column;text-align:center}}
+
+/* ============ ABOUT US THEORY OF CHANGE INFOGRAPHIC ============ */
+.toc-flow{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:1.5rem;position:relative}
+.toc-card{background:#fff;border:1px solid #E5ECEC;border-radius:18px;padding:24px;position:relative;transition:all .3s;text-align:left}
+.toc-card:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(30,42,56,.1);border-color:#2BA3A0}
+.toc-num{position:absolute;top:-16px;left:24px;width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,#2BA3A0,#1F8582);color:#fff;display:grid;place-items:center;font-family:'Montserrat';font-weight:800;font-size:1.05rem;box-shadow:0 6px 16px rgba(43,163,160,.3)}
+.toc-card h4{font-family:'Montserrat';font-weight:700;font-size:1.05rem;margin:18px 0 4px;color:#1E2A38}
+.toc-card .toc-hindi{font-size:.78rem;color:#5A6B7A;font-style:italic;margin-bottom:12px;font-weight:500}
+.toc-card .toc-what{font-size:.85rem;color:#3D4A41;line-height:1.6;margin-bottom:12px}
+.toc-outcome{display:inline-block;background:#E6F5F4;border-left:3px solid #2BA3A0;padding:8px 12px;border-radius:8px;font-size:.82rem;color:#1F8582;font-weight:600;width:100%;line-height:1.4}
+.toc-outcome strong{display:block;font-size:.7rem;text-transform:uppercase;letter-spacing:.5px;color:#5A6B7A;font-weight:700;margin-bottom:3px}
+.toc-arrow-desktop{display:none}
+.toc-impact-banner{background:linear-gradient(135deg,#0F1A14,#1B3A24);color:#fff;border-radius:24px;padding:36px;text-align:center;margin-top:30px;position:relative;overflow:hidden}
+.toc-impact-banner::before{content:'';position:absolute;top:-80px;right:-80px;width:300px;height:300px;background:radial-gradient(circle,rgba(249,168,37,.2),transparent 70%);border-radius:50%}
+.toc-impact-banner::after{content:'';position:absolute;bottom:-100px;left:-80px;width:350px;height:350px;background:radial-gradient(circle,rgba(43,163,160,.25),transparent 70%);border-radius:50%}
+.toc-impact-banner h3{color:#F9A825;font-family:'Montserrat';font-weight:800;font-size:1.8rem;margin-bottom:10px;position:relative;z-index:1}
+.toc-impact-banner p{color:rgba(255,255,255,.9);font-size:1.05rem;max-width:780px;margin:0 auto;line-height:1.6;position:relative;z-index:1}
+.about-mv-card{background:#fff;border-radius:24px;padding:34px;border:1px solid #E5ECEC;box-shadow:0 6px 24px rgba(30,42,56,.05);height:100%;transition:all .3s}
+.about-mv-card:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(30,42,56,.1)}
+.about-mv-card.mission{border-top:4px solid #2BA3A0}
+.about-mv-card.vision{border-top:4px solid #FF7A59}
+.about-mv-card .icon{width:60px;height:60px;border-radius:16px;display:grid;place-items:center;font-size:1.6rem;margin-bottom:16px}
+.about-mv-card.mission .icon{background:rgba(43,163,160,.1);color:#2BA3A0}
+.about-mv-card.vision .icon{background:rgba(255,122,89,.1);color:#FF7A59}
+.about-mv-card h3{font-family:'Montserrat';font-weight:800;font-size:1.4rem;margin-bottom:12px;color:#1E2A38}
+.about-mv-card p{color:#3D4A41;font-size:1rem;line-height:1.7}
+.values-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.value-card{background:#fff;border:1px solid #E5ECEC;border-radius:16px;padding:22px;text-align:center;transition:all .3s}
+.value-card:hover{transform:translateY(-4px);box-shadow:0 10px 24px rgba(30,42,56,.08);border-color:#2BA3A0}
+.value-icon{width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,rgba(43,163,160,.1),rgba(31,133,130,.1));color:#2BA3A0;display:grid;place-items:center;font-size:1.5rem;margin:0 auto 12px}
+.value-card h4{font-family:'Montserrat';font-weight:700;font-size:1rem;color:#1E2A38;margin-bottom:6px}
+.value-card p{font-size:.83rem;color:#5A6B7A;margin:0;line-height:1.5}
+.leader-card{background:#fff;border:1px solid #E5ECEC;border-radius:20px;padding:32px;text-align:center;max-width:480px;margin:0 auto;box-shadow:0 6px 20px rgba(30,42,56,.06);transition:all .3s}
+.leader-card:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(30,42,56,.1)}
+.leader-avatar{width:120px;height:120px;border-radius:50%;background:linear-gradient(135deg,#2BA3A0,#1F8582);color:#fff;display:grid;place-items:center;font-family:'Montserrat';font-weight:800;font-size:2.2rem;margin:0 auto 16px;box-shadow:0 8px 20px rgba(43,163,160,.25)}
+.leader-card h3{font-family:'Montserrat';font-weight:800;font-size:1.4rem;color:#1E2A38;margin-bottom:4px}
+.leader-role{color:#2BA3A0;font-weight:600;font-size:.95rem;margin-bottom:14px}
+.leader-desc{color:#3D4A41;font-size:.95rem;line-height:1.7}
+
+/* ============ GET INVOLVED 4-CARD GRID (COMPACT) ============ */
+.involve-cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.involve-card{background:#fff;border:1px solid #E5ECEC;border-radius:18px;padding:20px 18px;text-align:center;transition:all .3s;cursor:pointer;display:flex;flex-direction:column;height:100%}
+.involve-card:hover{transform:translateY(-6px);box-shadow:0 14px 34px rgba(30,42,56,.1);border-color:#2BA3A0}
+.involve-card-icon{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;font-size:1.5rem;margin:0 auto 10px;flex-shrink:0}
+.involve-card.corporate .involve-card-icon{background:linear-gradient(135deg,rgba(43,163,160,.1),rgba(31,133,130,.1));color:#2BA3A0}
+.involve-card.individual .involve-card-icon{background:linear-gradient(135deg,rgba(255,122,89,.1),rgba(255,184,163,.1));color:#FF7A59}
+.involve-card.volunteer .involve-card-icon{background:linear-gradient(135deg,rgba(61,164,122,.1),rgba(46,125,50,.1));color:#3DA47A}
+.involve-card.career .involve-card-icon{background:linear-gradient(135deg,rgba(249,168,37,.1),rgba(255,152,0,.1));color:#F9A825}
+.involve-card h3{font-family:'Montserrat';font-weight:700;font-size:1.05rem;color:#1E2A38;margin-bottom:4px}
+.involve-card .sub{color:#5A6B7A;font-size:.78rem;font-weight:500;margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px}
+.involve-card p{color:#3D4A41;font-size:.85rem;line-height:1.5;margin-bottom:12px;flex-grow:1}
+.involve-card .btn{margin-top:auto;width:100%;padding:10px 16px;font-size:.85rem}
+
+/* Career card highlight (compact) */
+.career-highlight{background:#FFF8F3;border:1px solid #FFB8A3;border-radius:12px;padding:10px;margin-bottom:12px;text-align:center}
+.career-highlight strong{display:block;color:#FF7A59;font-family:'Montserrat';font-weight:700;font-size:.9rem;margin-bottom:2px}
+.career-highlight span{color:#5A6B7A;font-size:.78rem}
+.career-email{color:#FF7A59;font-weight:600;font-size:.82rem;margin-top:4px;display:block;word-break:break-all}
+
+/* ============ BLOG MODAL ============ */
+.blog-modal-body{font-family:'Inter';color:#1E2A38;line-height:1.8}
+.blog-modal-body h4{font-family:'Montserrat';font-weight:700;font-size:1.1rem;color:#2BA3A0;margin:18px 0 8px}
+.blog-modal-body p{margin-bottom:12px;color:#3D4A41;font-size:.95rem}
+.blog-modal-body ul{margin:8px 0 16px 22px;color:#3D4A41}
+.blog-modal-body ul li{margin-bottom:6px;font-size:.95rem}
+.blog-modal-body strong{color:#1E2A38}
+.blog-modal-body .article-meta{display:flex;gap:14px;align-items:center;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid #E5ECEC;color:#5A6B7A;font-size:.85rem}
+
+/* ============ BLOG SECTION GRID ============ */
+.blog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.blog-card{background:#fff;border:1px solid #E5ECEC;border-radius:18px;overflow:hidden;cursor:pointer;transition:all .3s;display:flex;flex-direction:column}
+.blog-card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(30,42,56,.1);border-color:#2BA3A0}
+.blog-thumb{height:200px;background-size:cover;background-position:center;position:relative}
+.blog-card .badge{position:absolute;top:14px;left:14px}
+.blog-card-body{padding:22px;flex-grow:1;display:flex;flex-direction:column}
+.blog-card-body .meta{color:#5A6B7A;font-size:.78rem;margin-bottom:8px}
+.blog-card-body h3{font-family:'Montserrat';font-weight:700;font-size:1.1rem;color:#1E2A38;margin-bottom:8px;line-height:1.3}
+.blog-card-body p{color:#3D4A41;font-size:.88rem;margin-bottom:12px;flex-grow:1}
+.blog-card-body .read-more{margin-top:auto;color:#2BA3A0;font-weight:600;font-size:.85rem;display:inline-flex;align-items:center;gap:4px}
+
+/* ============ OUR IMPACT BANNER (REDESIGNED) ============ */
+.impact-banner{position:relative;width:100%;overflow:hidden;background:#0F1A14}
+.impact-banner::before{content:'';position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1531983412531-1f49a365ffed?w=1920&q=80');background-size:cover;background-position:center;background-repeat:no-repeat;opacity:.35;filter:grayscale(.2) contrast(1.05);z-index:1}
+.impact-banner::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(15,42,35,.92) 0%,rgba(15,26,20,.82) 50%,rgba(31,80,75,.88) 100%);z-index:2}
+.impact-banner-glow-1{position:absolute;top:-100px;left:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(43,163,160,.25),transparent 70%);border-radius:50%;z-index:3;pointer-events:none}
+.impact-banner-glow-2{position:absolute;bottom:-120px;right:-100px;width:450px;height:450px;background:radial-gradient(circle,rgba(249,168,37,.15),transparent 70%);border-radius:50%;z-index:3;pointer-events:none}
+.impact-inner{position:relative;z-index:5;padding:80px 0 90px;color:#fff}
+.impact-eyebrow{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(10px);padding:8px 18px;border-radius:9999px;font-family:'Montserrat';font-weight:700;font-size:.78rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:18px}
+.impact-eyebrow .dot{width:8px;height:8px;border-radius:50%;background:#FF7A59;animation:pulse-slow 2s ease-in-out infinite}
+.impact-title{font-family:'Montserrat';font-weight:800;font-size:clamp(2.2rem,5vw,3.6rem);line-height:1.1;color:#fff;margin:0 0 12px;letter-spacing:-.5px}
+.impact-title .accent{color:#7FD4B8}
+.impact-subtitle{font-family:'Inter';font-size:clamp(1rem,1.5vw,1.15rem);color:rgba(255,255,255,.85);font-weight:400;max-width:620px;margin:0 0 60px;font-style:italic}
+
+/* Connecting line decoration */
+.impact-connector{display:flex;align-items:center;justify-content:center;margin:0 0 40px;position:relative}
+.impact-connector .line{height:1px;flex:1;background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent)}
+.impact-connector .diamond{width:10px;height:10px;background:#FF7A59;transform:rotate(45deg);margin:0 18px;box-shadow:0 0 12px rgba(255,122,89,.5)}
+
+/* Stats row */
+.impact-stats{display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative}
+.impact-stat{position:relative;padding:8px 18px;text-align:center}
+.impact-stat:not(:last-child)::after{content:'';position:absolute;right:0;top:15%;bottom:15%;width:1px;background:linear-gradient(180deg,transparent,rgba(255,255,255,.3),transparent)}
+.impact-stat-dot{width:6px;height:6px;border-radius:50%;background:#FF7A59;margin:0 auto 14px;box-shadow:0 0 10px rgba(255,122,89,.6)}
+.impact-number{font-family:'Montserrat';font-weight:900;font-size:clamp(2.2rem,5vw,3.8rem);line-height:1;color:#fff;letter-spacing:-1px;margin-bottom:10px;display:block;text-shadow:0 2px 20px rgba(0,0,0,.3)}
+.impact-number .plus{color:#7FD4B8;font-size:.85em;margin-left:2px}
+.impact-label{font-family:'Montserrat';font-weight:600;font-size:.72rem;color:rgba(255,255,255,.9);letter-spacing:1.5px;text-transform:uppercase;line-height:1.5;display:block;max-width:160px;margin:0 auto}
+
+@media(max-width:1024px){.nav-menu{position:absolute;top:100%;left:0;right:0;background:#fff;flex-direction:column;align-items:stretch;padding:18px;gap:4px;border-bottom:1px solid #E5ECEC;box-shadow:0 4px 14px rgba(30,42,56,.08);max-height:0;overflow:hidden;transition:max-height .4s ease}#navMenu.open{max-height:600px}#navMenu>li>a{padding:12px 14px !important;display:block}.menu-btn{display:block !important}.flagship-grid,.science-grid,.contact-grid,.program-modal-grid{grid-template-columns:1fr;gap:30px}.flagship-features{grid-template-columns:1fr}.toc-flow{grid-template-columns:repeat(2,1fr);gap:30px}.toc-arrow-desktop{display:none}.impact-stats{grid-template-columns:repeat(3,1fr);gap:24px}.impact-stat:nth-child(3)::after{display:none}}
+@media(max-width:768px){.btn{padding:12px 20px;font-size:.875rem}.modal-body{padding:20px 24px 24px}.modal-header{padding:18px 24px}.timeline-card-item{flex-direction:column;text-align:center}.toc-flow{grid-template-columns:1fr;gap:24px}.involve-cards-grid{grid-template-columns:1fr}.values-grid{grid-template-columns:repeat(2,1fr)}.involve-card{padding:20px 18px}.impact-inner{padding:60px 0 70px}.impact-stats{grid-template-columns:repeat(2,1fr);gap:30px 12px}.impact-stat::after{display:none !important}.impact-number{font-size:2.2rem}.impact-label{font-size:.68rem}.impact-subtitle{margin-bottom:40px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important}}
 </style>
 </head>
@@ -220,10 +329,6 @@ input,select,textarea,button{font-family:inherit}
 <div class="modal-body" id="modalBody"></div>
 </div>
 </div>
-
-<a href="https://wa.me/91XXXXXXXXXX?text=Hello%20Her%20First%201000%20Days" target="_blank" rel="noopener noreferrer" class="whatsapp-widget" aria-label="Chat on WhatsApp">
-<svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-</a>
 
 <script>
 'use strict';
@@ -283,7 +388,7 @@ const initCounters = () => {
         e.target.dataset.animated = '1';
         const target = parseInt(e.target.dataset.target);
         const suffix = e.target.dataset.suffix || '';
-        const duration = 2000;
+        const duration = 2200;
         const start = performance.now();
         const step = (now) => {
           const p = Math.min((now - start) / duration, 1);
@@ -316,7 +421,24 @@ const openModal = (key) => {
   if (!content) return;
   document.getElementById('modalTitle').innerHTML = content.title;
   document.getElementById('modalBody').innerHTML = content.body;
-  document.getElementById('mainModal').classList.add('open');
+  const modal = document.getElementById('mainModal');
+  const inner = modal.querySelector('.modal');
+  inner.classList.remove('modal-wide');
+  if (content.wide) inner.classList.add('modal-wide');
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+};
+
+// ============== BLOG ARTICLE MODAL ==============
+const openBlog = (id) => {
+  const article = BLOG_ARTICLES[id];
+  if (!article) return;
+  document.getElementById('modalTitle').innerHTML = article.title;
+  document.getElementById('modalBody').innerHTML = '<div class="blog-modal-body">' + article.content + '</div>';
+  const modal = document.getElementById('mainModal');
+  const inner = modal.querySelector('.modal');
+  inner.classList.add('modal-wide');
+  modal.classList.add('open');
   document.body.style.overflow = 'hidden';
 };
 
@@ -555,7 +677,7 @@ const MODAL_CONTENT = {
   
   'science-toddler': { title: '🎒 1 to 2 Years (Days 636-1000)', body: `
     <p style="margin-bottom:16px;line-height:1.7">The toddler years transform a baby into a curious, mobile, communicating human.</p>
-    <div class="program-modal-item" style="margin-bottom:10px"><h5>🥗 Complementary Feeding</h5><p>After 6 months, breast milk alone isn't enough. Iron-rich, calorie-dense foods needed.</p></div>
+    <div class="program-modal-item" style="margin-bottom:10px"><h5>� Complementary Feeding</h5><p>After 6 months, breast milk alone isn't enough. Iron-rich, calorie-dense foods needed.</p></div>
     <div class="program-modal-item" style="margin-bottom:10px"><h5>🎨 Early Childhood Development</h5><p>Play-based learning, talking, reading. Quality stimulation boosts cognitive scores by 20-30%.</p></div>
     <div class="program-modal-item" style="margin-bottom:10px"><h5>🧼 Hygiene & WASH</h5><p>Handwashing with soap reduces diarrhea by 40%.</p></div>
     <div class="program-modal-item" style="margin-bottom:10px"><h5>💬 Language Development</h5><p>Talking to your child builds vocabulary. By age 2, talkative households: 300+ words; quiet: 100.</p></div>` },
@@ -572,7 +694,7 @@ const MODAL_CONTENT = {
     </div>
     <div style="margin-top:20px;text-align:center"><button onclick="closeModal();navigate('donate')" class="btn btn-coral">Support This Program</button></div>` },
   
-  'prog-newborn': { title: '👶 Newborn Health & Survival', body: `
+  'prog-newborn': { title: '� Newborn Health & Survival', body: `
     <p style="margin-bottom:16px;line-height:1.7">Life-saving interventions during the most vulnerable period. 80% of newborn deaths are preventable.</p>
     <div class="program-modal-grid">
       <div class="program-modal-item"><h5>🏠 Home-Based Care</h5><p>6 home visits in first month by ASHA workers.</p></div>
@@ -609,12 +731,275 @@ const MODAL_CONTENT = {
     <div style="margin-top:20px;text-align:center"><button onclick="closeModal();navigate('donate')" class="btn btn-coral">Support This Program</button></div>` }
 };
 
+// ============== BLOG ARTICLES ==============
+const BLOG_ARTICLES = {
+  1: {
+    title: '🌟 Reaching 200 Mothers in Rural Aligarh',
+    content: `
+      <div class="article-meta"><span class="badge bg-coral text-white">Featured</span><span>� December 15, 2024</span><span>⏱ 6 min read</span></div>
+      <h4>How Community Health Workers Can Help Identify High-Risk Pregnancies</h4>
+      <p>Every pregnancy deserves timely care, attention and support. In rural communities, however, women may face barriers such as limited access to healthcare, lack of awareness, transportation challenges and delayed recognition of pregnancy-related warning signs.</p>
+      <p>Community health workers can play an important role in bridging this gap.</p>
+      <p>Through community-level outreach, our team focused on connecting with mothers and families, understanding their needs and encouraging timely antenatal care. Reaching 200 mothers in rural Aligarh demonstrated how local engagement can help bring maternal health services closer to families.</p>
+      <h4>Identifying High-Risk Pregnancies</h4>
+      <p>Not every pregnancy carries the same level of risk. Certain conditions require closer monitoring and timely referral.</p>
+      <p>Community health workers can help identify women who may need additional medical attention by asking about health history, pregnancy-related symptoms and access to antenatal services.</p>
+      <p>Possible warning signs and risk factors can include:</p>
+      <ul>
+        <li>Severe or persistent headaches</li>
+        <li>High blood pressure or swelling</li>
+        <li>Vaginal bleeding</li>
+        <li>Severe abdominal pain</li>
+        <li>Previous pregnancy complications</li>
+        <li>Severe anemia</li>
+        <li>Diabetes or other existing health conditions</li>
+        <li>Reduced fetal movement later in pregnancy</li>
+      </ul>
+      <p>Identifying these concerns does not replace medical diagnosis. Instead, it creates an opportunity for early referral and appropriate professional care.</p>
+      <h4>The Importance of Antenatal Care</h4>
+      <p>Regular antenatal care allows healthcare professionals to monitor the health of both mother and baby. It can provide opportunities for screening, nutrition counselling, vaccination, birth preparedness and identification of complications.</p>
+      <p>Community workers can encourage pregnant women to attend scheduled check-ups and help families understand why these visits matter.</p>
+      <h4>Reaching Families Where They Live</h4>
+      <p>One of the strengths of community-based health programmes is that they bring health conversations directly into communities.</p>
+      <p>A simple home visit can become an opportunity to discuss:</p>
+      <ul>
+        <li>Nutrition during pregnancy</li>
+        <li>Iron and folic acid supplementation</li>
+        <li>Antenatal check-ups</li>
+        <li>Birth preparedness</li>
+        <li>Institutional delivery</li>
+        <li>Newborn care</li>
+        <li>Breastfeeding</li>
+        <li>Warning signs requiring urgent care</li>
+      </ul>
+      <h4>From Identification to Referral</h4>
+      <p>The real value of community outreach lies not only in identifying a concern but also in connecting the woman with appropriate services.</p>
+      <p>A strong referral pathway can help ensure that women identified as potentially high-risk receive timely assessment by qualified healthcare professionals.</p>
+      <h4>Building Healthier Beginnings</h4>
+      <p>Reaching 200 mothers is more than a number. Each mother represents a family, a pregnancy and the beginning of a new life.</p>
+      <p>At Her First 1000 Days, we believe that healthier communities begin with informed families, accessible services and timely support.</p>
+      <p>Our goal is to strengthen maternal and child health by working with communities and supporting evidence-based approaches across the first 1,000 days—from pregnancy through a child's second birthday.</p>
+      <p><strong>Every mother deserves care. Every child deserves a healthy beginning.</strong></p>
+    `
+  },
+  2: {
+    title: '� First Hour After Birth Matters Most',
+    content: `
+      <div class="article-meta"><span class="badge bg-teal text-white">Newborn</span><span>📅 December 10, 2024</span><span>⏱ 5 min read</span></div>
+      <h4>Understanding the Importance of the First Hour for a Newborn</h4>
+      <p>The moments immediately after birth are a critical transition for a newborn. A baby moves from the protected environment of the womb to a world where they must begin breathing, maintaining body temperature and feeding.</p>
+      <p>The first hour provides an important window for essential newborn care.</p>
+      <h4>Immediate Skin-to-Skin Contact</h4>
+      <p>When medically appropriate, placing a newborn directly on the mother's chest can support early bonding and help the baby maintain body temperature.</p>
+      <p>Skin-to-skin contact can also support the initiation of breastfeeding and help create an early connection between mother and baby.</p>
+      <h4>Early Breastfeeding</h4>
+      <p>Breastfeeding should ideally begin as soon as possible after birth when the mother and baby are stable.</p>
+      <p>The first breast milk, called colostrum, is small in quantity but rich in protective components. It provides important nutrients and immune protection for the newborn.</p>
+      <p>Early breastfeeding also supports maternal bonding and can help establish breastfeeding.</p>
+      <h4>Keeping the Baby Warm</h4>
+      <p>Newborns can lose body heat quickly, particularly immediately after birth.</p>
+      <p>Simple measures such as drying the baby, appropriate clothing and skin-to-skin contact can help reduce heat loss.</p>
+      <h4>Delayed Cord Clamping</h4>
+      <p>When appropriate and according to clinical guidance, delayed cord clamping can provide additional blood from the placenta to the newborn and may contribute to improved iron stores.</p>
+      <p>The timing of cord clamping should be determined by trained healthcare professionals based on the condition of both mother and baby.</p>
+      <h4>Essential Newborn Assessment</h4>
+      <p>Healthcare professionals should assess the newborn after birth and provide necessary preventive and medical care.</p>
+      <p>Depending on national guidelines and the circumstances of birth, this may include monitoring breathing, temperature, feeding and other signs of newborn wellbeing.</p>
+      <h4>Why the First Hour Matters</h4>
+      <p>The first hour is not about one single intervention. It is about creating a safe transition for the baby while supporting the mother.</p>
+      <p>Warmth, breathing, early breastfeeding, infection prevention and appropriate assessment all contribute to a healthy start.</p>
+      <h4>A Healthy Beginning Starts Early</h4>
+      <p>At Her First 1000 Days, we recognize that the health of a child is influenced from pregnancy through early childhood.</p>
+      <p>Supporting mothers and families with reliable information and access to appropriate care can help create stronger beginnings for children.</p>
+      <p><strong>The first hour is only the beginning—but it can be a very important one.</strong></p>
+    `
+  },
+  3: {
+    title: '🥗 Hidden Hunger: Why Micronutrients Matter',
+    content: `
+      <div class="article-meta"><span class="badge bg-success text-white">Nutrition</span><span>📅 December 5, 2024</span><span>⏱ 6 min read</span></div>
+      <h4>The Nutrients We Need Even When We Are Eating Enough</h4>
+      <p>When we think about malnutrition, we often think about not having enough food.</p>
+      <p>But malnutrition can also occur when a person consumes enough calories but does not receive enough essential vitamins and minerals.</p>
+      <p>This is commonly described as "hidden hunger."</p>
+      <h4>What Is Hidden Hunger?</h4>
+      <p>Hidden hunger refers to deficiencies of essential micronutrients such as iron, folate, iodine, vitamin A, zinc and other vitamins and minerals.</p>
+      <p>A person may appear healthy or consume sufficient food while still having a micronutrient deficiency.</p>
+      <p>This makes hidden hunger particularly challenging to identify.</p>
+      <h4>Why Micronutrients Matter During Pregnancy</h4>
+      <p>Pregnancy significantly increases the body's nutritional requirements.</p>
+      <p>Iron is important for the production of haemoglobin and supporting the increased blood volume during pregnancy. Folate is essential for cell division and fetal development. Iodine is important for thyroid function and brain development.</p>
+      <p>Poor nutritional status during pregnancy can have consequences for both mother and baby.</p>
+      <h4>Children Are Also Vulnerable</h4>
+      <p>Young children grow rapidly, making adequate nutrition particularly important.</p>
+      <p>Micronutrients support:</p>
+      <ul>
+        <li>Brain development</li>
+        <li>Immune function</li>
+        <li>Growth</li>
+        <li>Blood formation</li>
+        <li>Healthy bones and tissues</li>
+        <li>Overall development</li>
+      </ul>
+      <p>Nutrition during the first 1,000 days can therefore have a lasting influence on a child's health and development.</p>
+      <h4>Food Diversity Matters</h4>
+      <p>A diverse diet can help improve micronutrient intake.</p>
+      <p>Depending on individual dietary needs and local availability, nutritious foods can include:</p>
+      <ul>
+        <li>Green leafy vegetables</li>
+        <li>Pulses and legumes</li>
+        <li>Whole grains</li>
+        <li>Milk and dairy products</li>
+        <li>Eggs</li>
+        <li>Nuts and seeds</li>
+        <li>Fruits and vegetables</li>
+        <li>Meat, poultry or fish for those who consume them</li>
+      </ul>
+      <p>Food-based approaches should be complemented by supplements when recommended by qualified healthcare professionals.</p>
+      <h4>Prevention Requires More Than One Solution</h4>
+      <p>Hidden hunger cannot be addressed through one food or one supplement alone.</p>
+      <p>It requires a combination of nutrition education, dietary diversity, supplementation when indicated, maternal healthcare, breastfeeding support, food security and strong community health systems.</p>
+      <h4>Building a Better Nutritional Future</h4>
+      <p>At Her First 1000 Days, we believe nutrition is fundamental to maternal and child health.</p>
+      <p>Our work focuses on promoting informed nutrition practices and strengthening awareness around the nutritional needs of mothers and young children.</p>
+      <p><strong>Good nutrition is not simply about eating enough. It is about getting the nutrients needed to grow, develop and thrive.</strong></p>
+    `
+  },
+  4: {
+    title: '👩‍⚕️ Training 50 ASHA Workers',
+    content: `
+      <div class="article-meta"><span class="badge bg-coral text-white">Training</span><span>📅 December 1, 2024</span><span>⏱ 5 min read</span></div>
+      <h4>Strengthening Community Health Through Frontline Workers</h4>
+      <p>Healthcare does not begin inside a hospital.</p>
+      <p>For millions of families, the first point of contact with the health system may be a community-based frontline worker.</p>
+      <p>ASHA workers play an important role in connecting communities with essential health and nutrition services.</p>
+      <h4>Why Frontline Training Matters</h4>
+      <p>ASHA workers interact closely with women, children and families. They may support health awareness, encourage antenatal care, promote immunization and help families connect with appropriate health services.</p>
+      <p>Regular training can strengthen their knowledge, communication skills and confidence.</p>
+      <p>As part of our community health approach, we focused on strengthening the capacity of 50 ASHA workers through structured learning and practical engagement.</p>
+      <h4>Key Areas of Learning</h4>
+      <p>Training can cover topics relevant to the needs of the communities they serve, including:</p>
+      <ul>
+        <li>Maternal health</li>
+        <li>Antenatal and postnatal care</li>
+        <li>Nutrition during pregnancy</li>
+        <li>Newborn care</li>
+        <li>Breastfeeding</li>
+        <li>Child nutrition</li>
+        <li>Immunization awareness</li>
+        <li>Recognition of health warning signs</li>
+        <li>Referral and follow-up</li>
+        <li>Community counselling</li>
+      </ul>
+      <h4>From Knowledge to Action</h4>
+      <p>Training is most effective when knowledge can be translated into practical action.</p>
+      <p>Role plays, case discussions, demonstrations and community-based examples can help frontline workers apply concepts in real situations.</p>
+      <p>For example, recognizing a pregnancy-related warning sign is important—but understanding when and where to refer a woman can be equally important.</p>
+      <h4>Building Confidence</h4>
+      <p>Frontline workers often communicate complex health information to families with different levels of literacy and awareness.</p>
+      <p>Training therefore needs to focus not only on technical information but also on communication.</p>
+      <p>Simple language, respectful counselling and active listening can make health messages more effective.</p>
+      <h4>Strengthening the Community Health System</h4>
+      <p>Training 50 ASHA workers is one step toward a larger goal: strengthening the connection between communities and the health system.</p>
+      <p>When frontline workers are supported with appropriate knowledge, tools and referral linkages, they can become powerful agents of positive change.</p>
+      <p>At Her First 1000 Days, we believe that investing in frontline health workers is an investment in mothers, children and communities.</p>
+      <p><strong>Stronger frontline workers. Better-informed families. Healthier beginnings.</strong></p>
+    `
+  },
+  5: {
+    title: '💗 PCOS and Mental Health',
+    content: `
+      <div class="article-meta"><span class="badge" style="background:#F9A825;color:#000">PCOS</span><span>📅 November 28, 2024</span><span>⏱ 6 min read</span></div>
+      <h4>Understanding the Connection Between Hormonal Health and Emotional Wellbeing</h4>
+      <p>Polycystic Ovary Syndrome, commonly known as PCOS, is a common hormonal and metabolic condition affecting women of reproductive age.</p>
+      <p>PCOS is often discussed in relation to irregular periods, acne, excess hair growth, weight changes and fertility.</p>
+      <p>But there is another important part of the conversation that deserves attention: mental health.</p>
+      <h4>PCOS Is More Than a Physical Condition</h4>
+      <p>Living with PCOS can be challenging.</p>
+      <p>Changes in weight, skin, hair growth, menstrual cycles or fertility can affect how a woman feels about her body and her health.</p>
+      <p>Some women may experience stress, anxiety, low mood or reduced quality of life.</p>
+      <p>This does not mean that every woman with PCOS will experience mental health difficulties. However, emotional wellbeing should be considered as part of comprehensive PCOS care.</p>
+      <h4>Body Image and Self-Esteem</h4>
+      <p>Visible symptoms such as acne, hair growth or changes in weight can influence body image.</p>
+      <p>Social expectations and comments from family or others can sometimes make these concerns more difficult.</p>
+      <p>Women with PCOS deserve support that is respectful and free from judgment.</p>
+      <h4>The Importance of Lifestyle Support</h4>
+      <p>Lifestyle management can be an important part of PCOS care.</p>
+      <p>Balanced nutrition, regular physical activity, adequate sleep and stress-management strategies may support overall health.</p>
+      <p>However, there is no single "PCOS diet" that works for everyone.</p>
+      <p>Individual needs vary, and nutritional or medical advice should be personalized with qualified professionals.</p>
+      <h4>When Should You Seek Support?</h4>
+      <p>If you are experiencing persistent sadness, anxiety, loss of interest in activities, sleep problems or difficulty coping with daily life, consider speaking with a qualified mental-health professional or healthcare provider.</p>
+      <p>Seeking support is not a sign of weakness.</p>
+      <p>Mental health deserves the same attention as physical health.</p>
+      <h4>A More Holistic Approach to PCOS</h4>
+      <p>PCOS management should look beyond menstrual cycles and laboratory values.</p>
+      <p>A woman's emotional wellbeing, lifestyle, nutrition, reproductive goals and quality of life are also important.</p>
+      <p>At Her First 1000 Days, through initiatives such as Hormone Ki Suno, we aim to promote reliable health information and encourage women to recognize symptoms, seek appropriate professional guidance and take an informed approach to their wellbeing.</p>
+      <p><strong>Your hormones matter. Your mental health matters. And your wellbeing matters.</strong></p>
+    `
+  },
+  6: {
+    title: '🍲 5 Iron-Rich Recipes for Pregnancy',
+    content: `
+      <div class="article-meta"><span class="badge" style="background:#F9A825;color:#000">Recipes</span><span>📅 November 22, 2024</span><span>⏱ 7 min read</span></div>
+      <h4>Simple Indian Food Ideas to Support Healthy Nutrition During Pregnancy</h4>
+      <p>Pregnancy increases the body's nutritional needs, including the need for iron.</p>
+      <p>Iron is essential for making haemoglobin, the protein in red blood cells that carries oxygen throughout the body. During pregnancy, adequate iron intake becomes particularly important as blood volume increases and the developing baby has nutritional requirements of its own.</p>
+      <p>Food is an important source of iron, although some pregnant women may also require iron supplements as recommended by their healthcare provider.</p>
+      <p>Here are five simple meal ideas that can contribute to a nutritious pregnancy diet.</p>
+      <h4>1. Palak Dal</h4>
+      <p><strong>Ingredients:</strong> Moong or masoor dal, spinach, tomato, onion, cumin and mild spices.</p>
+      <p><strong>Why it helps:</strong> Dal provides iron and protein, while spinach contributes iron and folate.</p>
+      <p><strong>Tip:</strong> Add tomato or lemon to the meal to provide vitamin C, which can help improve absorption of non-haem iron.</p>
+      <h4>2. Chana Chaat</h4>
+      <p><strong>Ingredients:</strong> Boiled chickpeas, tomato, cucumber, onion, coriander and lemon.</p>
+      <p><strong>Why it helps:</strong> Chickpeas provide plant-based iron, protein and fibre.</p>
+      <p><strong>Tip:</strong> Use freshly prepared ingredients and maintain good food hygiene during pregnancy.</p>
+      <h4>3. Ragi Vegetable Cheela</h4>
+      <p><strong>Ingredients:</strong> Ragi flour, grated vegetables, curd or water and mild spices.</p>
+      <p><strong>Why it helps:</strong> Ragi can contribute iron and other nutrients while vegetables increase dietary diversity.</p>
+      <p>Serve with a nutritious accompaniment such as curd if suitable for you.</p>
+      <h4>4. Rajma Rice with Vegetables</h4>
+      <p><strong>Ingredients:</strong> Cooked rajma, rice, tomato, onion and seasonal vegetables.</p>
+      <p><strong>Why it helps:</strong> Rajma provides plant-based iron and protein.</p>
+      <p>Pairing legumes with vegetables can make the meal more nutrient-dense.</p>
+      <h4>5. Sesame and Peanut Ladoo</h4>
+      <p><strong>Ingredients:</strong> Sesame seeds, peanuts and a suitable natural sweetener such as jaggery.</p>
+      <p><strong>Why it helps:</strong> Sesame seeds and peanuts provide iron, healthy fats and other nutrients.</p>
+      <p><strong>Important:</strong> Keep portions moderate because these ladoos can be energy-dense.</p>
+      <h4>Improve Iron Absorption</h4>
+      <p>The type of iron found in plant foods is absorbed less efficiently than the iron found in animal foods.</p>
+      <p>You can support absorption by combining plant-based iron sources with vitamin-C-rich foods such as:</p>
+      <ul>
+        <li>Lemon</li>
+        <li>Guava</li>
+        <li>Orange</li>
+        <li>Amla</li>
+        <li>Tomato</li>
+        <li>Capsicum</li>
+      </ul>
+      <p>It is also generally advisable to avoid taking tea or coffee immediately with iron-rich meals because certain compounds can reduce iron absorption.</p>
+      <h4>Food and Supplements Work Together</h4>
+      <p>A nutritious diet is important, but food alone may not always meet the increased iron requirements of pregnancy.</p>
+      <p>Pregnant women should follow the iron and folic acid supplementation advice provided by their healthcare professional or local health programme.</p>
+      <p>If you have symptoms of anemia or have been diagnosed with low haemoglobin, consult a qualified healthcare professional rather than relying only on dietary changes.</p>
+      <h4>Nourishing the First 1,000 Days</h4>
+      <p>Nutrition during pregnancy forms an important part of the first 1,000 days of life.</p>
+      <p>At Her First 1000 Days, we promote practical, culturally appropriate and evidence-informed nutrition awareness to help mothers and families make healthier choices.</p>
+      <p><strong>Healthy food today can help build a healthier tomorrow.</strong></p>
+    `
+  }
+};
+
 // ============== GLOBAL CLICK HANDLER ==============
 document.addEventListener('click', e => {
   const trig = e.target.closest('[data-modal]');
   if (trig) { e.preventDefault(); openModal(trig.dataset.modal); return; }
   const toolEl = e.target.closest('[data-tool]');
   if (toolEl) { e.preventDefault(); e.stopPropagation(); openTool(toolEl.dataset.tool); return; }
+  const blog = e.target.closest('[data-article]');
+  if (blog) { e.preventDefault(); openBlog(blog.dataset.article); return; }
   const faq = e.target.closest('.faq-q');
   if (faq) { faq.parentElement.classList.toggle('open'); return; }
   const cat = e.target.closest('.cat-btn');
@@ -686,6 +1071,15 @@ const showInvolveTab = (tab) => {
   document.querySelectorAll('.involve-panel').forEach(p => p.classList.add('hidden'));
   document.querySelector(`[data-tab="${tab}"]`)?.classList.add('active');
   document.querySelector(`[data-panel="${tab}"]`)?.classList.remove('hidden');
+  document.querySelectorAll('.involve-tab:not(.active)').forEach(t => { t.classList.add('bg-cream','text-charcoal'); });
+};
+
+const scrollToInvolve = (target) => {
+  showInvolveTab(target);
+  setTimeout(() => {
+    const el = document.getElementById('involve-sections');
+    if (el) window.scrollTo({ top: el.offsetTop - 80, behavior: 'smooth' });
+  }, 100);
 };
 
 // Mobile menu
@@ -733,7 +1127,6 @@ const footer = `
 <h4 class="font-heading font-bold text-base mb-4">Contact</h4>
 <ul class="space-y-3 text-sm text-white/70">
 <li>Registered Office,<br>Aligarh, Uttar Pradesh,<br>India - 202001</li>
-<li><a href="tel:+91XXXXXXXXXX" class="hover:text-coral transition">+91-XXXXX-XXXXX</a></li>
 <li><a href="mailto:hello@herfirst1000days.org" class="hover:text-coral transition">hello@herfirst1000days.org</a></li>
 </ul></div>
 </div>
@@ -756,33 +1149,68 @@ home: `<div class="page">
 <!-- HERO -->
 <section class="relative min-h-[90vh] flex items-center pt-20 overflow-hidden">
 <div class="absolute inset-0"><div class="absolute inset-0 bg-gradient-to-r from-charcoal/85 via-charcoal/60 to-charcoal/30 z-10"></div>
-<img src="hero.png"alt="Mother and newborn"class="w-full h-full object-cover"loading="eager"></div>
+<img src="https://images.unsplash.com/photo-1531983412531-1f49a365ffed?w=1920&q=80" alt="Mother and newborn" class="w-full h-full object-cover" loading="eager"></div>
 <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
 <div class="max-w-3xl">
 <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur border border-white/20 rounded-full px-4 py-1.5 mb-6"><span class="w-2 h-2 bg-success rounded-full animate-pulse" aria-hidden="true"></span><span class="text-white text-xs font-medium">12A · 80G · CSR-1 Registered Trust</span></div>
-<h1 class="font-heading font-extrabold text-white text-4xl sm:text-5xl lg:text-6xl leading-tight mb-6">Every Child Deserves a <span class="text-coral">Healthy Start.</span></h1>
-<p class="text-white/90 text-lg sm:text-xl mb-8 leading-relaxed max-w-2xl">Supporting mothers and children from conception to a child's 2nd birthday in underserved communities.</p>
-<div class="flex flex-col sm:flex-row gap-4 mb-10">
-<a href="#" onclick="navigate('donate');return false" class="btn btn-coral">❤️ Sponsor a Mother</a>
-<a href="#" onclick="navigate('get-involved');return false" class="btn btn-outline" style="color:#fff;border-color:#fff">Partner via CSR →</a>
-</div>
-<div class="flex flex-wrap gap-4 sm:gap-6 text-white/80 text-xs sm:text-sm">
-<div>✓ 80G Tax Exemption</div><div>✓ CSR-1 Certified</div><div>✓ 12A Registered</div>
+<h1 class="font-heading font-extrabold text-white text-4xl sm:text-5xl lg:text-6xl leading-tight mb-6">Nurturing Health.<br><span class="text-coral">Building Futures.</span></h1>
+<p class="text-white/90 text-lg sm:text-xl mb-10 leading-relaxed max-w-2xl">We work to improve the health, nutrition and development of mothers and children during the critical first 1000 days of life.</p>
+<div class="flex flex-col sm:flex-row gap-4">
+<a href="#" onclick="navigate('programs');return false" class="btn btn-primary">Explore Our Programs</a>
+<a href="#" onclick="navigate('donate');return false" class="btn btn-coral">Sponsor a Mother</a>
 </div>
 </div>
 </div>
 </section>
 
-<!-- STATS / IMPACT -->
-<section class="bg-cream py-16 sm:py-20" id="impact">
+<!-- OUR IMPACT — REDESIGNED FULL-WIDTH BANNER -->
+<section class="impact-banner" id="impact">
+<div class="impact-banner-glow-1"></div>
+<div class="impact-banner-glow-2"></div>
+<div class="impact-inner">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="text-center mb-12"><p class="text-coral font-semibold text-sm uppercase tracking-wider mb-2">Our Impact</p><h2 class="font-heading font-bold text-3xl sm:text-4xl text-charcoal">Numbers That Tell a Story</h2></div>
-<div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
-<div class="text-center bg-white p-6 sm:p-8 rounded-2xl shadow-sm"><div class="font-heading font-extrabold text-4xl sm:text-5xl text-teal mb-2" data-target="1250" data-suffix="+">0</div><p class="text-muted text-sm font-medium">Mothers Supported</p></div>
-<div class="text-center bg-white p-6 sm:p-8 rounded-2xl shadow-sm"><div class="font-heading font-extrabold text-4xl sm:text-5xl text-coral mb-2" data-target="4500" data-suffix="+">0</div><p class="text-muted text-sm font-medium">Newborns Cared For</p></div>
-<div class="text-center bg-white p-6 sm:p-8 rounded-2xl shadow-sm"><div class="font-heading font-extrabold text-4xl sm:text-5xl text-success mb-2" data-target="8000" data-suffix="+">0</div><p class="text-muted text-sm font-medium">Nutrition Kits Delivered</p></div>
-<div class="text-center bg-white p-6 sm:p-8 rounded-2xl shadow-sm"><div class="font-heading font-extrabold text-4xl sm:text-5xl text-teal mb-2" data-target="38" data-suffix="+">0</div><p class="text-muted text-sm font-medium">Health Camps Conducted</p></div>
-</div></div></section>
+<div class="text-center">
+<div class="impact-eyebrow"><span class="dot"></span>OUR IMPACT</div>
+<h2 class="impact-title">Numbers That Tell a <span class="accent">Story</span></h2>
+</div>
+
+<div class="impact-connector" aria-hidden="true">
+<div class="line"></div>
+<div class="diamond"></div>
+<div class="line"></div>
+</div>
+
+<div class="impact-stats">
+<div class="impact-stat">
+<div class="impact-stat-dot"></div>
+<span class="impact-number" data-target="4500" data-suffix="+">0</span>
+<span class="impact-label">Pregnant & Lactating Mothers Reached</span>
+</div>
+<div class="impact-stat">
+<div class="impact-stat-dot"></div>
+<span class="impact-number" data-target="250" data-suffix="+">0</span>
+<span class="impact-label">Government Frontline Workers Trained</span>
+</div>
+<div class="impact-stat">
+<div class="impact-stat-dot"></div>
+<span class="impact-number" data-target="3300" data-suffix="+">0</span>
+<span class="impact-label">Home Visits Conducted</span>
+</div>
+<div class="impact-stat">
+<div class="impact-stat-dot"></div>
+<span class="impact-number" data-target="10000" data-suffix="+">0</span>
+<span class="impact-label">Population Reached</span>
+</div>
+<div class="impact-stat">
+<div class="impact-stat-dot"></div>
+<span class="impact-number" data-target="50" data-suffix="+">0</span>
+<span class="impact-label">PCOS Patients Counselled</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
 
 <!-- ABOUT -->
 <section class="py-16 sm:py-24 bg-white" id="about">
@@ -897,7 +1325,7 @@ home: `<div class="page">
 <div class="tool-card" data-tool="duedate" tabindex="0" role="button"><div class="tool-icon" aria-hidden="true">📅</div><div><h4>Due Date</h4><p>Estimate arrival date</p></div></div>
 <div class="tool-card" data-tool="water" tabindex="0" role="button"><div class="tool-icon" aria-hidden="true">💧</div><div><h4>Water Intake</h4><p>Daily hydration needs</p></div></div>
 <div class="tool-card" data-tool="pcos" tabindex="0" role="button"><div class="tool-icon" aria-hidden="true">⚕️</div><div><h4>PCOS Risk</h4><p>5-question screening</p></div></div>
-<div class="tool-card" data-tool="growth" tabindex="0" role="button"><div class="tool-icon" aria-hidden="true">📊</div><div><h4>Child Growth</h4><p>WHO standards based</p></div></div>
+<div class="tool-card" data-tool="growth" tabindex="0" role="button"><div class="tool-icon" aria-hidden="true">�</div><div><h4>Child Growth</h4><p>WHO standards based</p></div></div>
 <div class="tool-card" data-tool="nutrition" tabindex="0" role="button"><div class="tool-icon" aria-hidden="true">🥗</div><div><h4>Nutrition Score</h4><p>Evaluate diet quality</p></div></div>
 <div class="tool-card" data-tool="plate" tabindex="0" role="button"><div class="tool-icon" aria-hidden="true">🍽️</div><div><h4>Plate Builder</h4><p>Build balanced meal</p></div></div>
 </div>
@@ -910,11 +1338,12 @@ home: `<div class="page">
 <div class="flagship-grid">
 <div>
 <p class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-4" style="background:rgba(249,168,37,.15);color:#F9A825">⭐ Flagship Program</p>
-<h2 class="font-heading font-bold text-white text-3xl sm:text-4xl lg:text-5xl mb-4">Hormone <span style="color:#F9A825">Ki Suno</span></h2>
+<h2 class="font-heading font-bold text-white text-3xl sm:text-4xl lg:text-5xl mb-2">Hormone Ki Suno <span style="color:#F9A825">— PMOS</span></h2>
+<p class="text-white/80 text-sm mb-3" style="font-style:italic">(Formerly PCOS & PCOD)</p>
 <p class="text-white/90 text-lg mb-2">Listen to Your Hormones. Take Charge of Your Health.</p>
-<p class="text-white/80 mb-6">An evidence-based women's health initiative helping women understand, prevent and manage PCOS through nutrition, lifestyle, behaviour change, and expert counselling.</p>
+<p class="text-white/80 mb-6">An evidence-based women's health initiative helping women understand, prevent and manage PMOS (formerly PCOS & PCOD) through nutrition, lifestyle, behaviour change, and expert counselling.</p>
 <div class="flagship-features">
-<div class="flagship-feat"><div class="num">1</div><div><strong>Understand</strong><small>What PCOS really is</small></div></div>
+<div class="flagship-feat"><div class="num">1</div><div><strong>Understand</strong><small>What PMOS really is</small></div></div>
 <div class="flagship-feat"><div class="num">2</div><div><strong>Prevent</strong><small>Early screening</small></div></div>
 <div class="flagship-feat"><div class="num">3</div><div><strong>Manage</strong><small>Nutrition & lifestyle</small></div></div>
 <div class="flagship-feat"><div class="num">4</div><div><strong>Support</strong><small>Expert counselling</small></div></div>
@@ -925,7 +1354,7 @@ home: `<div class="page">
 </div>
 </div>
 <div class="pcos-visual">
-<h4 style="color:#F9A825">Common PCOS Symptoms</h4>
+<h4 style="color:#F9A825">Common PMOS Symptoms</h4>
 <ul class="symptom-list">
 <li>Irregular or missed periods</li>
 <li>Excess facial or body hair</li>
@@ -952,8 +1381,8 @@ home: `<div class="page">
 </div>
 <div class="testi-card">
 <div class="testi-stars" aria-label="5 out of 5 stars">★★★★★</div>
-<p class="testi-text">"After years of struggling with PCOS, the Hormone Ki Suno program gave me a structured plan and emotional support. I've lost 8kg naturally and my cycles are regular."</p>
-<div class="testi-author"><div class="testi-avatar">AK</div><div><strong>Ananya K.</strong><small>PCOS Warrior, Bengaluru</small></div></div>
+<p class="testi-text">"After years of struggling with PMOS, the Hormone Ki Suno program gave me a structured plan and emotional support. I've lost 8kg naturally and my cycles are regular."</p>
+<div class="testi-author"><div class="testi-avatar">AK</div><div><strong>Ananya K.</strong><small>PMOS Warrior, Bengaluru</small></div></div>
 </div>
 <div class="testi-card">
 <div class="testi-stars" aria-label="5 out of 5 stars">★★★★★</div>
@@ -971,17 +1400,17 @@ home: `<div class="page">
 <a href="#" onclick="navigate('blog');return false" class="inline-flex items-center gap-2 text-teal font-semibold mt-4 sm:mt-0 hover:gap-3 transition-all">View All Stories →</a>
 </div>
 <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-<article class="card !p-0 overflow-hidden cursor-pointer">
-<div class="relative h-48" style="background-image:url('https://images.unsplash.com/photo-1584515933487-779824d29309?w=600&q=80');background-size:cover;background-position:center"><span class="absolute top-3 left-3 badge bg-coral text-white">Health Camp</span></div>
-<div class="p-6"><p class="text-muted text-xs mb-2">Dec 12, 2024 · 5 min read</p><h3 class="font-heading font-bold text-base text-charcoal mb-2">Reaching 200 Mothers in Rural Aligarh</h3><p class="text-muted text-sm mb-3">How our community health workers identified high-risk pregnancies.</p></div>
+<article class="card !p-0 overflow-hidden cursor-pointer" data-article="1">
+<div class="relative h-48" style="background-image:url('https://images.unsplash.com/photo-1584515933487-779824d29309?w=600&q=80');background-size:cover;background-position:center"><span class="absolute top-3 left-3 badge bg-coral text-white">Featured</span></div>
+<div class="p-6"><p class="text-muted text-xs mb-2">Dec 15, 2024 · 6 min read</p><h3 class="font-heading font-bold text-base text-charcoal mb-2">Reaching 200 Mothers in Rural Aligarh</h3><p class="text-muted text-sm mb-3">How our community health workers identified high-risk pregnancies.</p><span class="read-more-link">Read article →</span></div>
 </article>
-<article class="card !p-0 overflow-hidden cursor-pointer">
+<article class="card !p-0 overflow-hidden cursor-pointer" data-article="2">
 <div class="relative h-48" style="background-image:url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&q=80');background-size:cover;background-position:center"><span class="absolute top-3 left-3 badge bg-teal text-white">Newborn Care</span></div>
-<div class="p-6"><p class="text-muted text-xs mb-2">Dec 8, 2024 · 4 min read</p><h3 class="font-heading font-bold text-base text-charcoal mb-2">Why the First Hour After Birth Matters Most</h3><p class="text-muted text-sm mb-3">Skin-to-skin contact, breastfeeding, and the golden hour.</p></div>
+<div class="p-6"><p class="text-muted text-xs mb-2">Dec 10, 2024 · 5 min read</p><h3 class="font-heading font-bold text-base text-charcoal mb-2">Why the First Hour After Birth Matters Most</h3><p class="text-muted text-sm mb-3">Skin-to-skin contact, breastfeeding, and the golden hour.</p><span class="read-more-link">Read article →</span></div>
 </article>
-<article class="card !p-0 overflow-hidden cursor-pointer">
+<article class="card !p-0 overflow-hidden cursor-pointer" data-article="3">
 <div class="relative h-48" style="background-image:url('https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&q=80');background-size:cover;background-position:center"><span class="absolute top-3 left-3 badge bg-success text-white">Nutrition</span></div>
-<div class="p-6"><p class="text-muted text-xs mb-2">Dec 3, 2024 · 6 min read</p><h3 class="font-heading font-bold text-base text-charcoal mb-2">Fighting Hidden Hunger: Micronutrients</h3><p class="text-muted text-sm mb-3">Iron, folate, vitamin A — targeted supplementation.</p></div>
+<div class="p-6"><p class="text-muted text-xs mb-2">Dec 5, 2024 · 6 min read</p><h3 class="font-heading font-bold text-base text-charcoal mb-2">Fighting Hidden Hunger: Micronutrients</h3><p class="text-muted text-sm mb-3">Iron, folate, vitamin A — targeted supplementation.</p><span class="read-more-link">Read article →</span></div>
 </article>
 </div>
 </div></section>
@@ -1013,29 +1442,181 @@ home: `<div class="page">
 ${footer}
 </div>`,
 
-// ===== ABOUT =====
+// ===== ABOUT - WITH ENGLISH THEORY OF CHANGE =====
 about: `<div class="page">
-<section class="page-hero"><div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><p class="text-coral font-semibold text-sm uppercase tracking-wider mb-3">About Us</p><h1 class="font-heading font-bold text-4xl sm:text-5xl mb-4">Our Story. Our Mission. Our Future.</h1><p class="text-white/90 text-lg max-w-2xl">A registered Public Charitable Trust working to ensure every woman and child receives the healthiest possible start to life.</p></div></section>
-<section class="py-16 sm:py-20 bg-white"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="grid lg:grid-cols-2 gap-12 items-center mb-16">
-<div><h2 class="font-heading font-bold text-3xl text-charcoal mb-6">Born From a Simple Truth</h2><p class="text-muted leading-relaxed mb-4">Founded in 2018, Her First 1000 Days was born from a powerful observation: the most critical window of a child's development happens before they can speak, walk, or even smile clearly.</p><p class="text-muted leading-relaxed">We exist to make sure no mother or child in underserved communities is left behind.</p></div>
-<div class="bg-cream rounded-3xl p-8">
-<h3 class="font-heading font-bold text-lg text-teal mb-2">Our Mission</h3><p class="text-muted mb-4">To improve maternal, newborn, child and women's health through evidence-based nutrition, public health interventions, behaviour change, research, innovation and community engagement.</p>
-<h3 class="font-heading font-bold text-lg text-coral mb-2">Our Vision</h3><p class="text-muted mb-4">A future where every woman experiences a healthy pregnancy and every child receives the healthiest possible start during the first 1,000 days of life.</p>
-<h3 class="font-heading font-bold text-lg text-success mb-2">Our Values</h3><p class="text-muted">Dignity · Evidence · Transparency · Community-Ownership</p>
-</div></div>
-<h3 class="text-center font-heading font-bold text-2xl mb-6">Our Core Values</h3>
-<div class="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
-<div class="card text-center"><div class="text-3xl mb-2">⚖️</div><h4 class="font-bold">Integrity</h4></div>
-<div class="card text-center"><div class="text-3xl mb-2">💗</div><h4 class="font-bold">Compassion</h4></div>
-<div class="card text-center"><div class="text-3xl mb-2">💡</div><h4 class="font-bold">Innovation</h4></div>
-<div class="card text-center"><div class="text-3xl mb-2">🌍</div><h4 class="font-bold">Equity</h4></div>
-<div class="card text-center"><div class="text-3xl mb-2">📊</div><h4 class="font-bold">Accountability</h4></div>
-<div class="card text-center"><div class="text-3xl mb-2">🤝</div><h4 class="font-bold">Respect</h4></div>
-<div class="card text-center"><div class="text-3xl mb-2">🔬</div><h4 class="font-bold">Evidence</h4></div>
-<div class="card text-center"><div class="text-3xl mb-2">🤝</div><h4 class="font-bold">Collaboration</h4></div>
+
+<!-- HERO -->
+<section class="page-hero">
+<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<p class="text-coral font-semibold text-sm uppercase tracking-wider mb-3">About Us</p>
+<h1 class="font-heading font-bold text-4xl sm:text-5xl lg:text-6xl mb-2">Her First 1000 Days</h1>
+<p class="text-coral-soft text-lg sm:text-xl font-medium mb-4" style="color:#FFB8A3">Born From a Simple Truth</p>
+<p class="text-white/90 text-base sm:text-lg max-w-3xl leading-relaxed">Founded in 2018, Her First 1000 Days was born from a powerful observation: the most critical window of a child's development happens before they can speak, walk, or even smile clearly.</p>
+<p class="text-white/80 text-base sm:text-lg max-w-3xl mt-4 leading-relaxed">The first 1,000 days of life—from conception up to two years of age—form the essential foundation for physical growth, brain development, and lifelong health. Yet, in underserved communities, thousands of mothers and newborns miss out on this crucial window due to a lack of awareness, poor nutrition, and inadequate healthcare access.</p>
+<p class="text-white/80 text-base sm:text-lg max-w-3xl mt-4 leading-relaxed font-semibold">We exist to break this cycle and make sure no mother or child is left behind.</p>
 </div>
-</div></section>
+</section>
+
+<!-- MISSION & VISION -->
+<section class="py-16 sm:py-20 bg-white">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid md:grid-cols-2 gap-8">
+<div class="about-mv-card mission">
+<div class="icon">🎯</div>
+<h3>Our Mission</h3>
+<p>To improve maternal, newborn, child, and women's health through evidence-based nutrition, public health interventions, behavior change communication, research, innovation, and community engagement.</p>
+</div>
+<div class="about-mv-card vision">
+<div class="icon">👁️</div>
+<h3>Our Vision</h3>
+<p>A future where every woman experiences a healthy pregnancy and every child receives the healthiest possible start during the critical first 1,000 days of life.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- THEORY OF CHANGE -->
+<section class="py-16 sm:py-20 bg-cream">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center max-w-4xl mx-auto mb-12">
+<p class="text-coral font-semibold text-sm uppercase tracking-wider mb-3">How We Create Change</p>
+<h2 class="font-heading font-bold text-3xl sm:text-4xl lg:text-5xl text-charcoal mb-3">Our Theory of Change</h2>
+<p class="text-lg sm:text-xl font-semibold" style="color:#1F8582">How We Create Change</p>
+</div>
+
+<!-- Intro -->
+<div class="max-w-3xl mx-auto mb-10 text-center">
+<p class="text-muted text-lg leading-relaxed">We believe that meaningful change at the grassroots level happens when we address the root causes of health and social challenges.</p>
+<p class="text-muted text-lg leading-relaxed mt-3">Our Theory of Change is built around four key pillars:</p>
+</div>
+
+<!-- Flow header -->
+<div class="flex flex-col sm:flex-row items-center justify-center gap-3 mb-8">
+<div class="px-5 py-2 bg-white rounded-full border-2 border-teal text-teal font-semibold text-sm">INPUTS & INTERVENTIONS</div>
+<div class="text-2xl text-coral animate-flow">↓</div>
+<div class="px-5 py-2 bg-white rounded-full border-2 border-coral text-coral font-semibold text-sm">STRATEGIC OUTCOMES</div>
+<div class="text-2xl text-coral animate-flow">↓</div>
+<div class="px-5 py-2 bg-white rounded-full border-2 border-success text-success font-semibold text-sm">LONG-TERM IMPACT</div>
+</div>
+
+<!-- 4 Pillars -->
+<div class="toc-flow">
+<div class="toc-card">
+<div class="toc-num">1</div>
+<h4>Awareness & Behavior Change</h4>
+<div class="toc-hindi">Building Knowledge and Changing Behaviors</div>
+<div class="toc-what"><strong>What we do:</strong> We use community workshops, counselling, and Social & Behavior Change Communication (SBCC) to increase awareness among mothers and families about nutrition, healthcare, and healthy practices.</div>
+<div class="toc-outcome"><strong>Outcome</strong>Pregnant women and families adopt appropriate antenatal care, improved nutrition practices, and institutional delivery.</div>
+</div>
+<div class="toc-card">
+<div class="toc-num">2</div>
+<h4>Nutrition & Health Interventions</h4>
+<div class="toc-hindi">Improving Nutrition and Access to Health Services</div>
+<div class="toc-what"><strong>What we do:</strong> We provide direct nutrition support, micronutrient supplementation such as Iron-Folic Acid, preventive health screening, and vaccination drives.</div>
+<div class="toc-outcome"><strong>Outcome</strong>Reduced anemia, malnutrition, and early childhood infections.</div>
+</div>
+<div class="toc-card">
+<div class="toc-num">3</div>
+<h4>Community Ownership & Capacity Building</h4>
+<div class="toc-hindi">Building Community Ownership</div>
+<div class="toc-what"><strong>What we do:</strong> We train and empower local frontline health workers, including ASHAs and Anganwadi workers, as well as Self-Help Groups (SHGs).</div>
+<div class="toc-outcome"><strong>Outcome</strong>Health interventions continue to be supported and sustained by communities even after direct programme support ends.</div>
+</div>
+<div class="toc-card">
+<div class="toc-num">4</div>
+<h4>Evidence & Innovation</h4>
+<div class="toc-hindi">Research and Data-Driven Solutions</div>
+<div class="toc-what"><strong>What we do:</strong> We collect data, conduct impact assessments, and develop scalable public health models.</div>
+<div class="toc-outcome"><strong>Outcome</strong>Sustainable models that can be adapted and implemented at scale in collaboration with local governments and partners.</div>
+</div>
+</div>
+
+<!-- ULTIMATE IMPACT -->
+<div class="toc-impact-banner">
+<h3>🌟 The Ultimate Impact</h3>
+<p>Reduced maternal and infant mortality, zero malnutrition in early childhood, and healthier, resilient communities across India.</p>
+</div>
+</div>
+</section>
+
+<!-- CORE VALUES -->
+<section class="py-16 sm:py-20 bg-white">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center max-w-3xl mx-auto mb-12">
+<p class="text-coral font-semibold text-sm uppercase tracking-wider mb-3">What Guides Us</p>
+<h2 class="font-heading font-bold text-3xl sm:text-4xl text-charcoal">Our Core Values</h2>
+</div>
+<div class="values-grid">
+<div class="value-card"><div class="value-icon">⚖️</div><h4>Integrity</h4><p>Transparency and absolute honesty in every action and resource allocated.</p></div>
+<div class="value-card"><div class="value-icon">💗</div><h4>Compassion</h4><p>Serving every mother and child with deep empathy and respect.</p></div>
+<div class="value-card"><div class="value-icon">💡</div><h4>Innovation</h4><p>Applying research-driven and creative solutions to complex public health challenges.</p></div>
+<div class="value-card"><div class="value-icon">🌍</div><h4>Equity & Inclusivity</h4><p>Ensuring equal care and opportunities without discrimination of caste, creed, or background.</p></div>
+<div class="value-card"><div class="value-icon">📊</div><h4>Accountability</h4><p>Taking full ownership of our outcomes and responsibility towards our donors and communities.</p></div>
+<div class="value-card"><div class="value-icon">🤝</div><h4>Respect & Dignity</h4><p>Honoring the dignity, culture, and rights of the communities we serve.</p></div>
+<div class="value-card"><div class="value-icon">🔬</div><h4>Evidence</h4><p>Grounding all our interventions in scientific data, research, and proven practices.</p></div>
+<div class="value-card"><div class="value-icon">🤝</div><h4>Collaboration</h4><p>Working closely with communities, healthcare workers, and government bodies for long-term impact.</p></div>
+</div>
+</div>
+</section>
+
+<!-- WHAT WE DO -->
+<section class="py-16 sm:py-20 bg-cream">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center max-w-3xl mx-auto mb-12">
+<p class="text-coral font-semibold text-sm uppercase tracking-wider mb-3">Our Work</p>
+<h2 class="font-heading font-bold text-3xl sm:text-4xl text-charcoal">What We Do</h2>
+</div>
+<div class="programs-grid">
+<div class="program-card" data-modal="prog-maternal" tabindex="0" role="button">
+<div class="program-icon" aria-hidden="true">🤱</div>
+<h3>Maternal & Newborn Healthcare</h3>
+<p>Antenatal care, safe institutional delivery support, and postpartum recovery tracking.</p>
+<span class="inline-flex items-center gap-1 text-teal text-sm font-semibold">Read More →</span>
+</div>
+<div class="program-card" data-modal="prog-nutrition" tabindex="0" role="button">
+<div class="program-icon" aria-hidden="true">🥗</div>
+<h3>Nutrition & Malnutrition Prevention</h3>
+<p>Supplementary nutrition kits and micronutrient support for pregnant women and infants.</p>
+<span class="inline-flex items-center gap-1 text-teal text-sm font-semibold">Read More →</span>
+</div>
+<div class="program-card" data-modal="prog-newborn" tabindex="0" role="button">
+<div class="program-icon" aria-hidden="true">💉</div>
+<h3>Child Immunization & Growth Tracking</h3>
+<p>Ensuring timely vaccination and regular developmental monitoring.</p>
+<span class="inline-flex items-center gap-1 text-teal text-sm font-semibold">Read More →</span>
+</div>
+<div class="program-card" data-modal="prog-community" tabindex="0" role="button">
+<div class="program-icon" aria-hidden="true">🏥</div>
+<h3>Community Medical Camps</h3>
+<p>Conducting rural healthcare sessions, screenings, and mobile health outreach.</p>
+<span class="inline-flex items-center gap-1 text-teal text-sm font-semibold">Read More →</span>
+</div>
+<div class="program-card" data-modal="prog-community" tabindex="0" role="button">
+<div class="program-icon" aria-hidden="true">💧</div>
+<h3>Hygiene & WASH Initiatives</h3>
+<p>Promoting clean water, sanitation practices, and menstrual hygiene management.</p>
+<span class="inline-flex items-center gap-1 text-teal text-sm font-semibold">Read More →</span>
+</div>
+</div>
+</div>
+</section>
+
+<!-- LEADERSHIP -->
+<section class="py-16 sm:py-20 bg-white">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center max-w-3xl mx-auto mb-12">
+<p class="text-coral font-semibold text-sm uppercase tracking-wider mb-3">Our Leadership</p>
+<h2 class="font-heading font-bold text-3xl sm:text-4xl text-charcoal">Leadership & Team</h2>
+</div>
+<div class="leader-card">
+<div class="leader-avatar">NA</div>
+<h3>Mr. Nabeel Ahamad</h3>
+<p class="leader-role">Founder & Chairperson</p>
+<p class="leader-desc">Founded Her First 1000 Days with a vision to address the root causes of maternal and child health inequities at the grassroots level through evidence-based public health strategies.</p>
+</div>
+</div>
+</section>
+
 ${footer}</div>`,
 
 // ===== PROGRAMS =====
@@ -1071,18 +1652,19 @@ programs: `<div class="page">
 </div></div></section>
 ${footer}</div>`,
 
-// ===== HORMONE KI SUNO =====
+// ===== HORMONE KI SUNO - UPDATED =====
 hormone: `<div class="page">
 <section class="flagship py-20"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 <p class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-4" style="background:rgba(249,168,37,.15);color:#F9A825">⭐ Flagship Program</p>
-<h1 class="font-heading font-bold text-white text-4xl sm:text-5xl lg:text-6xl mb-4">Hormone <span style="color:#F9A825">Ki Suno</span></h1>
+<h1 class="font-heading font-bold text-white text-4xl sm:text-5xl lg:text-6xl mb-2">Hormone <span style="color:#F9A825">Ki Suno — PMOS</span></h1>
+<p class="text-white/80 text-base sm:text-lg mb-4 italic">(Formerly PCOS & PCOD)</p>
 <p class="text-white/90 text-lg sm:text-xl max-w-2xl mb-8">Listen to Your Hormones. Take Charge of Your Health.</p>
 <div style="display:flex;gap:12px;flex-wrap:wrap">
-<a href="#" class="btn btn-accent" style="background:#F9A825;color:#000" data-tool="pcos">Take PCOS Risk Test</a>
+<a href="#" class="btn btn-accent" style="background:#F9A825;color:#000" data-tool="pcos">Take PMOS Risk Test</a>
 <a href="#" onclick="navigate('donate');return false" class="btn" style="background:transparent;border:1.5px solid rgba(255,255,255,.4);color:#fff">Support This Program</a>
 </div></div></section>
 <section class="py-16 bg-white"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="text-center mb-12"><h2 class="font-heading font-bold text-3xl text-charcoal mb-4">What is PCOS?</h2><p class="text-muted max-w-3xl mx-auto">Polycystic Ovary Syndrome (PCOS) is one of the most common hormonal disorders affecting 1 in 5 women in India.</p></div>
+<div class="text-center mb-12"><h2 class="font-heading font-bold text-3xl text-charcoal mb-4">What is PMOS?</h2><p class="text-muted max-w-3xl mx-auto">Polycystic Ovary Syndrome, now referred to as PMOS (formerly PCOS & PCOD), is one of the most common hormonal disorders affecting 1 in 5 women in India.</p></div>
 <div class="grid md:grid-cols-3 gap-6">
 <div class="card text-center"><div class="text-4xl mb-3">📊</div><h3 class="font-bold text-charcoal mb-2">Prevalence</h3><p class="text-muted">20% of Indian women</p></div>
 <div class="card text-center"><div class="text-4xl mb-3">🎯</div><h3 class="font-bold text-charcoal mb-2">Age Group</h3><p class="text-muted">15-35 years</p></div>
@@ -1120,14 +1702,73 @@ tools: `<div class="page">
 </div></section>
 ${footer}</div>`,
 
-// ===== GET INVOLVED =====
+// ===== GET INVOLVED - WITH 4-CARD GRID =====
 involved: `<div class="page">
-<section class="page-hero"><div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><p class="text-coral font-semibold text-sm uppercase tracking-wider mb-3">Get Involved</p><h1 class="font-heading font-bold text-4xl sm:text-5xl mb-4">Three Ways to Make a Difference</h1><p class="text-white/90 text-lg max-w-2xl">Whether you're a corporation, an individual, or a volunteer.</p></div></section>
+<section class="page-hero"><div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><p class="text-coral font-semibold text-sm uppercase tracking-wider mb-3">Get Involved</p><h1 class="font-heading font-bold text-4xl sm:text-5xl mb-4">Be Part of the Change</h1><p class="text-white/90 text-lg max-w-2xl">There are many ways to support healthier beginnings for mothers and children.</p></div></section>
+
+<!-- 4-CARD OVERVIEW -->
+<section class="py-16 sm:py-20 bg-white">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center max-w-3xl mx-auto mb-12">
+<p class="text-coral font-semibold text-sm uppercase tracking-wider mb-3">Choose Your Path</p>
+<h2 class="font-heading font-bold text-3xl sm:text-4xl text-charcoal">Get Involved</h2>
+<p class="text-muted text-lg mt-3">Whether you're a corporation, an individual, a volunteer, or looking to build a career — your contribution matters.</p>
+</div>
+
+<div class="involve-cards-grid">
+<!-- CORPORATES -->
+<div class="involve-card corporate" onclick="scrollToInvolve('corporate')">
+<div class="involve-card-icon">🏢</div>
+<div class="sub">For Corporates</div>
+<h3>Partner With Us</h3>
+<p>Partner with Her First 1000 Days to create meaningful impact in maternal, newborn and child health. Corporate organisations can support our programmes through CSR partnerships, funding, employee engagement, technical expertise and strategic collaborations.</p>
+<button class="btn btn-primary" onclick="event.stopPropagation();scrollToInvolve('corporate')">Partner With Us</button>
+</div>
+
+<!-- INDIVIDUALS -->
+<div class="involve-card individual" onclick="scrollToInvolve('individual')">
+<div class="involve-card-icon">💝</div>
+<div class="sub">For Individuals</div>
+<h3>Make a Difference</h3>
+<p>Every contribution can help create healthier beginnings for mothers and children. Individuals can support our mission through donations, awareness-building, community engagement and by helping us reach more families with reliable health and nutrition information.</p>
+<button class="btn btn-coral" onclick="event.stopPropagation();scrollToInvolve('individual')">Support Our Mission</button>
+</div>
+
+<!-- VOLUNTEERS -->
+<div class="involve-card volunteer" onclick="scrollToInvolve('volunteer')">
+<div class="involve-card-icon">🤝</div>
+<div class="sub">For Volunteers</div>
+<h3>Volunteer With Us</h3>
+<p>Your time, skills and passion can help strengthen our work. We welcome volunteers who want to contribute to maternal and child health, nutrition, community outreach, research, communications, digital initiatives and other areas of our work.</p>
+<button class="btn btn-coral" style="background:#3DA47A" onclick="event.stopPropagation();scrollToInvolve('volunteer')">Become a Volunteer</button>
+</div>
+
+<!-- CAREERS -->
+<div class="involve-card career" onclick="window.location.href='mailto:hello@herfirst1000days.org?subject=Career%20Opportunity%20%E2%80%93%20Her%20First%201000%20Days';event.stopPropagation();">
+<div class="involve-card-icon">🌟</div>
+<div class="sub">Careers</div>
+<h3>Join Our Team</h3>
+<p class="font-semibold" style="color:#1E2A38">Build a Career with Purpose</p>
+<p>Passionate about maternal and child health? Join our mission to transform the first 1,000 days of life for millions. We are looking for passionate, committed and talented individuals who want to use their skills to create meaningful social impact across public health, nutrition, programme management, research, communications, community engagement, fundraising, technology or administration.</p>
+<div class="career-highlight">
+<strong>Build a Career with Purpose</strong>
+<span>Send your CV to</span>
+<span class="career-email">hello@herfirst1000days.org</span>
+</div>
+<a href="mailto:hello@herfirst1000days.org?subject=Career%20Opportunity%20%E2%80%93%20Her%20First%201000%20Days" class="btn" style="background:#F9A825;color:#000;width:100%" onclick="event.stopPropagation();">Send Your CV</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- DETAILED SECTIONS -->
+<div id="involve-sections">
 <section class="py-12 bg-white sticky top-20 z-30 border-b"><div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex overflow-x-auto gap-2 justify-start sm:justify-center">
 <button class="involve-tab active whitespace-nowrap px-6 py-3 rounded-full font-semibold text-sm" data-tab="corporate" onclick="showInvolveTab('corporate')">For Corporates (CSR)</button>
 <button class="involve-tab whitespace-nowrap px-6 py-3 rounded-full font-semibold text-sm bg-cream text-charcoal" data-tab="individual" onclick="showInvolveTab('individual')">For Individuals</button>
 <button class="involve-tab whitespace-nowrap px-6 py-3 rounded-full font-semibold text-sm bg-cream text-charcoal" data-tab="volunteer" onclick="showInvolveTab('volunteer')">For Volunteers</button>
 </div></div></section>
+
 <div class="involve-panel" data-panel="corporate"><section class="py-16 bg-white"><div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 <h2 class="font-heading font-bold text-3xl text-charcoal mb-4">Partner With Purpose</h2>
 <p class="text-muted mb-4">Our programs align with <strong>Schedule VII, Section 135 of the Companies Act 2013</strong>.</p>
@@ -1138,11 +1779,13 @@ involved: `<div class="page">
 </div>
 <div class="flex gap-3"><a href="#" class="btn btn-primary">Download Brochure</a><a href="#" onclick="navigate('contact');return false" class="btn btn-outline">Schedule a Call</a></div>
 </div></section></div>
+
 <div class="involve-panel hidden" data-panel="individual"><section class="py-16 bg-white text-center"><div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 <h2 class="font-heading font-bold text-3xl text-charcoal mb-4">Your Donation, Your Tax Benefit</h2>
 <p class="text-muted text-lg mb-12">50% tax exempt under Section 80G.</p>
 <a href="#" onclick="navigate('donate');return false" class="btn btn-coral">Donate Now</a>
 </div></section></div>
+
 <div class="involve-panel hidden" data-panel="volunteer"><section class="py-16 bg-white"><div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="text-center mb-10"><h2 class="font-heading font-bold text-3xl text-charcoal mb-4">Lend Your Time. Change a Life.</h2></div>
 <form onsubmit="handleForm(this,event)" class="card">
@@ -1158,23 +1801,92 @@ involved: `<div class="page">
 </form>
 <div class="form-success hidden mt-4 p-6 bg-success/10 rounded-2xl text-center"><div class="text-4xl mb-2">🎉</div><h3>Thank you for applying!</h3></div>
 </div></section></div>
+</div>
+
 ${footer}</div>`,
 
-// ===== BLOG =====
+// ===== BLOG - 6 ARTICLES =====
 blog: `<div class="page">
 <section class="page-hero"><div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><p class="text-coral font-semibold text-sm uppercase tracking-wider mb-3">Stories & Insights</p><h1 class="font-heading font-bold text-4xl sm:text-5xl mb-4">From the Field</h1><p class="text-white/90 text-lg max-w-2xl">Field reports, public health articles, and stories of change.</p></div></section>
+
 <section class="py-12 bg-white"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<article class="grid md:grid-cols-2 gap-8 mb-12 card !p-0 overflow-hidden">
+
+<!-- Featured Article -->
+<article class="grid md:grid-cols-2 gap-8 mb-12 card !p-0 overflow-hidden" data-article="1" style="cursor:pointer">
 <div class="h-64 md:h-full" style="background-image:url('https://images.unsplash.com/photo-1584515933487-779824d29309?w=800&q=80');background-size:cover;background-position:center"></div>
-<div class="p-6 md:p-8 flex flex-col justify-center"><span class="badge bg-coral text-white mb-3">Featured</span><p class="text-muted text-sm mb-2">Dec 15, 2024</p><h2 class="font-heading font-bold text-2xl text-charcoal mb-3">Reaching 200 Mothers in Rural Aligarh</h2><p class="text-muted mb-4">How our community health workers identified high-risk pregnancies.</p></div>
-</article>
-<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-<article class="card !p-0 overflow-hidden"><div class="h-48" style="background-image:url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&q=80');background-size:cover;background-position:center"></div><div class="p-6"><span class="badge bg-teal/10 text-teal mb-2">Newborn</span><h3 class="font-heading font-bold text-base text-charcoal mt-2">First Hour After Birth Matters Most</h3></div></article>
-<article class="card !p-0 overflow-hidden"><div class="h-48" style="background-image:url('https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&q=80');background-size:cover;background-position:center"></div><div class="p-6"><span class="badge bg-success/10 text-success mb-2">Nutrition</span><h3 class="font-heading font-bold text-base text-charcoal mt-2">Hidden Hunger: Micronutrients</h3></div></article>
-<article class="card !p-0 overflow-hidden"><div class="h-48" style="background-image:url('https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=600&q=80');background-size:cover;background-position:center"></div><div class="p-6"><span class="badge bg-coral/10 text-coral mb-2">Training</span><h3 class="font-heading font-bold text-base text-charcoal mt-2">Training 50 ASHA Workers</h3></div></article>
-<article class="card !p-0 overflow-hidden"><div class="h-48" style="background-image:url('https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?w=600&q=80');background-size:cover;background-position:center"></div><div class="p-6"><span class="badge" style="background:#F9A825;color:#000">PCOS</span><h3 class="font-heading font-bold text-base text-charcoal mt-2">PCOS and Mental Health</h3></div></article>
-<article class="card !p-0 overflow-hidden"><div class="h-48" style="background-image:url('https://images.unsplash.com/photo-1505253758473-96b7015fcd40?w=600&q=80');background-size:cover;background-position:center"></div><div class="p-6"><span class="badge" style="background:#F9A825;color:#000">Recipes</span><h3 class="font-heading font-bold text-base text-charcoal mt-2">5 Iron-Rich Recipes for Pregnancy</h3></div></article>
+<div class="p-6 md:p-8 flex flex-col justify-center">
+<span class="badge bg-coral text-white mb-3 inline-block w-fit">Featured</span>
+<p class="text-muted text-sm mb-2">Dec 15, 2024 · 6 min read</p>
+<h2 class="font-heading font-bold text-2xl text-charcoal mb-3">Reaching 200 Mothers in Rural Aligarh</h2>
+<p class="text-muted mb-4">How our community health workers identified high-risk pregnancies through community outreach and timely antenatal care.</p>
+<span class="read-more-link">Read full article →</span>
 </div>
+</article>
+
+<!-- Other Articles -->
+<h3 class="font-heading font-bold text-2xl text-charcoal mb-6">More Stories</h3>
+<div class="blog-grid">
+<article class="blog-card" data-article="2">
+<div class="blog-thumb" style="background-image:url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&q=80')">
+<span class="badge bg-teal text-white">Newborn</span>
+</div>
+<div class="blog-card-body">
+<p class="meta">📅 Dec 10, 2024 · ⏱ 5 min read</p>
+<h3>First Hour After Birth Matters Most</h3>
+<p>Understanding skin-to-skin contact, early breastfeeding, and the golden hour for newborn wellbeing.</p>
+<span class="read-more">Read article →</span>
+</div>
+</article>
+
+<article class="blog-card" data-article="3">
+<div class="blog-thumb" style="background-image:url('https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&q=80')">
+<span class="badge bg-success text-white">Nutrition</span>
+</div>
+<div class="blog-card-body">
+<p class="meta">📅 Dec 5, 2024 · ⏱ 6 min read</p>
+<h3>Hidden Hunger: Why Micronutrients Matter</h3>
+<p>Iron, folate, vitamin A, zinc — the deficiencies that remain even when food appears sufficient.</p>
+<span class="read-more">Read article →</span>
+</div>
+</article>
+
+<article class="blog-card" data-article="4">
+<div class="blog-thumb" style="background-image:url('https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=600&q=80')">
+<span class="badge bg-coral text-white">Training</span>
+</div>
+<div class="blog-card-body">
+<p class="meta">📅 Dec 1, 2024 · ⏱ 5 min read</p>
+<h3>Training 50 ASHA Workers</h3>
+<p>Strengthening community health through the training of frontline workers and building sustainable local capacity.</p>
+<span class="read-more">Read article →</span>
+</div>
+</article>
+
+<article class="blog-card" data-article="5">
+<div class="blog-thumb" style="background-image:url('https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?w=600&q=80')">
+<span class="badge" style="background:#F9A825;color:#000">PCOS</span>
+</div>
+<div class="blog-card-body">
+<p class="meta">📅 Nov 28, 2024 · ⏱ 6 min read</p>
+<h3>PCOS and Mental Health</h3>
+<p>Understanding the connection between hormonal health, body image, and emotional wellbeing in PCOS.</p>
+<span class="read-more">Read article →</span>
+</div>
+</article>
+
+<article class="blog-card" data-article="6">
+<div class="blog-thumb" style="background-image:url('https://images.unsplash.com/photo-1505253758473-96b7015fcd40?w=600&q=80')">
+<span class="badge" style="background:#F9A825;color:#000">Recipes</span>
+</div>
+<div class="blog-card-body">
+<p class="meta">📅 Nov 22, 2024 · ⏱ 7 min read</p>
+<h3>5 Iron-Rich Recipes for Pregnancy</h3>
+<p>Simple Indian food ideas including palak dal, chana chaat, ragi cheela, rajma rice and sesame ladoo.</p>
+<span class="read-more">Read article →</span>
+</div>
+</article>
+</div>
+
 </div></section>
 ${footer}</div>`,
 
@@ -1201,10 +1913,9 @@ contact: `<div class="page">
 <div>
 <h2 class="font-heading font-bold text-2xl text-charcoal mb-6">Contact Information</h2>
 <div class="contact-grid">
-<div class="contact-item"><div class="ci" aria-hidden="true">📍</div><div><strong>Registered Office</strong><p class="text-muted text-sm" style="margin-top:4px">[Your Address]<br>Aligarh, UP, India - 202001</p></div></div>
-<a href="tel:+91XXXXXXXXXX" class="contact-item" style="text-decoration:none;color:inherit"><div class="ci" aria-hidden="true">📞</div><div><strong>Phone / WhatsApp</strong><p class="text-muted text-sm" style="margin-top:4px">+91-XXXXX-XXXXX</p></div></a>
+<div class="contact-item"><div class="ci" aria-hidden="true">📍</div><div><strong>Registered Office</strong><p class="text-muted text-sm" style="margin-top:4px">Registered Office,<br>Aligarh, Uttar Pradesh,<br>India - 202001</p></div></div>
 <a href="mailto:hello@herfirst1000days.org" class="contact-item" style="text-decoration:none;color:inherit"><div class="ci" aria-hidden="true">✉️</div><div><strong>Email</strong><p class="text-muted text-sm" style="margin-top:4px">hello@herfirst1000days.org</p></div></a>
-<div class="contact-item"><div class="ci" aria-hidden="true">🕐</div><div><strong>Office Hours</strong><p class="text-muted text-sm" style="margin-top:4px">Mon - Fri, 10 AM - 6 PM IST</p></div></div>
+<div class="contact-item"><div class="ci" aria-hidden="true">�</div><div><strong>Office Hours</strong><p class="text-muted text-sm" style="margin-top:4px">Mon - Fri, 10 AM - 6 PM IST</p></div></div>
 </div>
 </div>
 </div>
@@ -1261,6 +1972,7 @@ initCounters();
 window.navigate = navigate;
 window.closeModal = closeModal;
 window.openTool = openTool;
+window.openBlog = openBlog;
 window.calcBMI = calcBMI;
 window.calcEDD = calcEDD;
 window.calcWater = calcWater;
@@ -1274,6 +1986,7 @@ window.setCustomAmount = setCustomAmount;
 window.setFreq = setFreq;
 window.processDonation = processDonation;
 window.showInvolveTab = showInvolveTab;
+window.scrollToInvolve = scrollToInvolve;
 window.handleForm = handleForm;
 
 </script>
