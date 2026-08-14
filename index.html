@@ -1028,7 +1028,43 @@ const handleForm = (form, e) => {
     btn.disabled = false; btn.textContent = orig;
   }, 1200);
 };
+const CONTACT_FORM_URL = 'https://script.google.com/macros/s/AKfycbwlc5y6s53lIvrUb5LIdD0wmjRq-AVQ1x-s3BPYSGiHwd60hFkEFwg4FS8KHqWmcXsP/exec';
 
+const handleContactForm = async (form, e) => {
+  e.preventDefault();
+
+  const btn = form.querySelector('button[type="submit"]');
+  const originalText = btn.textContent;
+
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+
+  try {
+    const formData = new URLSearchParams(new FormData(form));
+
+    await fetch(CONTACT_FORM_URL, {
+      method: 'POST',
+      body: formData,
+      mode: 'no-cors'
+    });
+
+    form.style.display = 'none';
+
+    const success = form.parentElement.querySelector('.form-success');
+
+    if (success) {
+      success.classList.remove('hidden');
+    }
+
+  } catch (error) {
+    console.error(error);
+
+    alert('Sorry, your message could not be sent. Please try again.');
+
+    btn.disabled = false;
+    btn.textContent = originalText;
+  }
+};
 const selectTier = (amount, el) => {
   donateAmount = amount;
   document.querySelectorAll('.tier-card').forEach(c => c.classList.remove('active'));
@@ -1897,18 +1933,58 @@ contact: `<div class="page">
 <div class="grid lg:grid-cols-2 gap-12">
 <div>
 <h2 class="font-heading font-bold text-2xl text-charcoal mb-6">Send Us a Message</h2>
-<form onsubmit="handleForm(this,event)" class="space-y-4">
+
+<form onsubmit="handleContactForm(this,event)" class="space-y-4">
+
 <div class="grid sm:grid-cols-2 gap-4">
-<div><label class="form-label">Name <span class="req">*</span></label><input type="text" required class="form-input"></div>
-<div><label class="form-label">Phone <span class="req">*</span></label><input type="tel" required class="form-input"></div>
+
+<div>
+<label class="form-label">Name <span class="req">*</span></label>
+<input type="text" name="name" required class="form-input">
 </div>
-<div><label class="form-label">Email <span class="req">*</span></label><input type="email" required class="form-input"></div>
-<div><label class="form-label">Inquiry Type</label><select class="form-input"><option>General</option><option>CSR Partnership</option><option>Media</option><option>Volunteer</option><option>Donor Query</option></select></div>
-<div><label class="form-label">Subject</label><input type="text" class="form-input"></div>
-<div><label class="form-label">Message <span class="req">*</span></label><textarea required class="form-input" rows="5" placeholder="How can we help you?"></textarea></div>
+
+<div>
+<label class="form-label">Phone <span class="req">*</span></label>
+<input type="tel" name="phone" required class="form-input">
+</div>
+
+</div>
+
+<div>
+<label class="form-label">Email <span class="req">*</span></label>
+<input type="email" name="email" required class="form-input">
+</div>
+
+<div>
+<label class="form-label">Inquiry Type</label>
+<select name="inquiryType" class="form-input">
+<option>General</option>
+<option>CSR Partnership</option>
+<option>Media</option>
+<option>Volunteer</option>
+<option>Donor Query</option>
+</select>
+</div>
+
+<div>
+<label class="form-label">Subject</label>
+<input type="text" name="subject" class="form-input">
+</div>
+
+<div>
+<label class="form-label">Message <span class="req">*</span></label>
+<textarea name="message" required class="form-input" rows="5" placeholder="How can we help you?"></textarea>
+</div>
+
 <button type="submit" class="btn btn-primary w-full">Send Message</button>
+
 </form>
-<div class="form-success hidden mt-4 p-6 bg-success/10 rounded-2xl text-center"><div class="text-4xl mb-2">✅</div><h3 class="font-heading font-bold text-lg text-charcoal">Message sent!</h3><p class="text-muted text-sm">We'll respond within 24-48 hours.</p></div>
+
+<div class="form-success hidden mt-4 p-6 bg-success/10 rounded-2xl text-center">
+<div class="text-4xl mb-2">✅</div>
+<h3 class="font-heading font-bold text-lg text-charcoal">Message sent!</h3>
+<p class="text-muted text-sm">We'll respond within 24-48 hours.</p>
+</div>
 </div>
 <div>
 <h2 class="font-heading font-bold text-2xl text-charcoal mb-6">Contact Information</h2>
