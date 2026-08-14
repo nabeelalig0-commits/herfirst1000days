@@ -1039,13 +1039,20 @@ const handleContactForm = async (form, e) => {
   btn.disabled = true;
   btn.textContent = 'Sending...';
 
-  try {
-    const formData = new URLSearchParams(new FormData(form));
+  const data = {
+    name: form.elements.name.value.trim(),
+    phone: form.elements.phone.value.trim(),
+    email: form.elements.email.value.trim(),
+    inquiryType: form.elements.inquiryType.value,
+    subject: form.elements.subject.value.trim(),
+    message: form.elements.message.value.trim()
+  };
 
+  try {
     await fetch(CONTACT_FORM_URL, {
       method: 'POST',
-      body: formData,
-      mode: 'no-cors'
+      mode: 'no-cors',
+      body: JSON.stringify(data)
     });
 
     form.style.display = 'none';
