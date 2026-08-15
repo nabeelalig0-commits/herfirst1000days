@@ -1927,21 +1927,13 @@ involved: `<div class="page">
 <a href="#" onclick="navigate('donate');return false" class="btn btn-coral">Donate Now</a>
 </div></section></div>
 
-<div class="involve-panel hidden" data-panel="volunteer"><section class="py-16 bg-white"><div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="text-center mb-10"><h2 class="font-heading font-bold text-3xl text-charcoal mb-4">Lend Your Time. Change a Life.</h2></div>
-<form onsubmit="handleForm(this,event)" class="card">
-<div class="grid sm:grid-cols-2 gap-4">
-<div><label class="form-label">Full Name <span class="req">*</span></label><input type="text" required class="form-input"></div>
-<div><label class="form-label">Phone <span class="req">*</span></label><input type="tel" required class="form-input"></div>
-<div class="sm:col-span-2"><label class="form-label">Email <span class="req">*</span></label><input type="email" required class="form-input"></div>
-<div><label class="form-label">City <span class="req">*</span></label><input type="text" required class="form-input"></div>
-<div><label class="form-label">Skills</label><select class="form-input"><option>Medical / Healthcare</option><option>Teaching</option><option>Photography</option><option>Other</option></select></div>
-<div class="sm:col-span-2"><label class="form-label">Message</label><textarea class="form-input" rows="3"></textarea></div>
-</div>
-<button type="submit" class="btn btn-primary w-full mt-6">Submit Application</button>
-</form>
-<div class="form-success hidden mt-4 p-6 bg-success/10 rounded-2xl text-center"><div class="text-4xl mb-2">🎉</div><h3>Thank you for applying!</h3></div>
-</div></section></div>
+<!-- VOLUNTEERS -->
+<div class="involve-card volunteer" onclick="navigate('contact');return false;">
+<div class="involve-card-icon">🤝</div>
+<div class="sub">For Volunteers</div>
+<h3>Volunteer With Us</h3>
+<p>Your time, skills and passion can help strengthen our work. We welcome volunteers who want to contribute to maternal and child health, nutrition, community outreach, research, communications, digital initiatives and other areas of our work.</p>
+<button type="button" class="btn btn-coral" style="background:#3DA47A" onclick="event.stopPropagation();navigate('contact');return false;">Become a Volunteer</button>
 </div>
 
 ${footer}</div>`,
