@@ -61,6 +61,73 @@ input,select,textarea,button{font-family:inherit}
 .nav-link:hover::after,.nav-link.active::after{width:100%}
 .nav-link.active{color:#FF7A59 !important}
 
+
+/* ===== PROGRAMS PREMIUM OVERVIEW (PROGRAMS ONLY) ===== */
+.programs-premium-hero{background:linear-gradient(135deg,#E6F5F4 0%,#FFF8F3 100%);overflow:hidden;position:relative}
+.programs-premium-hero:before{content:"";position:absolute;width:420px;height:420px;border-radius:50%;background:rgba(43,163,160,.10);right:-150px;top:-170px}
+.programs-premium-hero:after{content:"";position:absolute;width:260px;height:260px;border-radius:50%;background:rgba(255,122,89,.10);left:-130px;bottom:-150px}
+.programs-premium-hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center;position:relative;z-index:1}
+.programs-premium-kicker{display:inline-flex;align-items:center;gap:10px;color:#2BA3A0;font-weight:800;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;margin-bottom:14px}
+.programs-premium-kicker:before,.programs-premium-kicker:after{content:"";width:34px;height:2px;background:#2BA3A0;border-radius:2px}
+.programs-premium-title{font-family:'Montserrat',sans-serif;font-weight:800;color:#1E2A38;font-size:clamp(2.1rem,4vw,4rem);line-height:1.08;margin-bottom:18px}
+.programs-premium-title span{color:#2BA3A0}
+.programs-premium-copy{color:#5A6B7A;font-size:1.08rem;line-height:1.75;max-width:640px}
+.programs-premium-image{border-radius:30px;overflow:hidden;box-shadow:0 22px 55px rgba(30,42,56,.14);position:relative;border:8px solid rgba(255,255,255,.75)}
+.programs-premium-image img{width:100%;height:390px;object-fit:cover}
+.programs-premium-image-badge{position:absolute;left:20px;bottom:20px;background:#fff;border-radius:16px;padding:11px 15px;box-shadow:0 10px 30px rgba(30,42,56,.12);color:#1E2A38;font-weight:700;font-size:.88rem}
+.programs-overview{background:#fff}
+.programs-overview-head{text-align:center;max-width:760px;margin:0 auto 34px}
+.programs-overview-head p{color:#5A6B7A;font-size:1rem}
+.programs-premium-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px}
+.program-premium-card{background:#fff;border:1px solid #E5ECEC;border-radius:22px;overflow:hidden;box-shadow:0 8px 24px rgba(30,42,56,.06);transition:transform .28s ease,box-shadow .28s ease,border-color .28s ease;cursor:pointer}
+.program-premium-card:hover{transform:translateY(-7px);box-shadow:0 18px 40px rgba(30,42,56,.12);border-color:#2BA3A0}
+.program-premium-card-image{height:155px;position:relative;overflow:hidden}
+.program-premium-card-image img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
+.program-premium-card:hover .program-premium-card-image img{transform:scale(1.05)}
+.program-premium-card-icon{position:absolute;left:16px;bottom:-18px;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:#fff;box-shadow:0 8px 22px rgba(30,42,56,.14);font-size:1.35rem}
+.program-premium-card-body{padding:29px 18px 20px}
+.program-premium-card h3{font-size:1.08rem;margin-bottom:8px;color:#1E2A38}
+.program-premium-card p{font-size:.88rem;color:#5A6B7A;min-height:58px;margin-bottom:12px}
+.program-checks{display:flex;flex-wrap:wrap;gap:6px 10px;margin-bottom:16px}
+.program-checks span{font-size:.73rem;color:#5A6B7A;display:inline-flex;align-items:center;gap:4px}
+.program-checks span:before{content:"✓";color:#2BA3A0;font-weight:800}
+.program-learn{display:inline-flex;align-items:center;gap:6px;color:#2BA3A0;font-size:.86rem;font-weight:800}
+.program-first1000{margin-top:54px;background:linear-gradient(135deg,#E6F5F4,#F7FBFA);border:1px solid #D7ECEB;border-radius:28px;padding:34px 38px;overflow:hidden}
+.program-first1000-grid{display:grid;grid-template-columns:.9fr 1.5fr;gap:34px;align-items:center}
+.program-first1000-kicker{font-size:.78rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#2BA3A0;margin-bottom:8px}
+.program-first1000 h3{font-size:clamp(1.65rem,3vw,2.35rem);margin-bottom:12px}
+.program-first1000 p{color:#5A6B7A;font-size:.95rem;line-height:1.65}
+.program-dayline{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;position:relative}
+.program-dayline:before{content:"";position:absolute;left:10%;right:10%;top:31px;height:2px;background:#9BD6D4;z-index:0}
+.program-day{position:relative;z-index:1;text-align:center}
+.program-day-dot{width:64px;height:64px;border-radius:50%;margin:0 auto 9px;background:#fff;border:6px solid #E6F5F4;display:grid;place-items:center;font-weight:800;color:#2BA3A0;box-shadow:0 7px 18px rgba(30,42,56,.08)}
+.program-day strong{display:block;font-size:.82rem;color:#1E2A38}
+.program-day small{display:block;color:#5A6B7A;font-size:.7rem;margin-top:2px}
+.program-days-note{text-align:center;color:#2BA3A0;font-family:'Montserrat',sans-serif;font-weight:800;font-size:.9rem;margin-top:18px}
+.program-impact-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
+.program-impact-item{background:#fff;border-radius:16px;padding:15px 18px;border:1px solid #E5ECEC;display:flex;align-items:center;gap:12px}
+.program-impact-item b{display:block;color:#2BA3A0;font-size:1.05rem}
+.program-impact-item span{display:block;color:#5A6B7A;font-size:.72rem}
+.program-how{padding-top:54px}
+.program-how-head{text-align:center;margin-bottom:30px}
+.program-how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.program-how-step{text-align:center;padding:10px 8px}
+.program-how-icon{width:58px;height:58px;border-radius:50%;margin:0 auto 12px;background:#E6F5F4;color:#2BA3A0;display:grid;place-items:center;font-size:1.35rem;font-weight:800;border:1px solid #CFE9E8}
+.program-how-step:nth-child(2) .program-how-icon{background:#FFF0EB;color:#FF7A59;border-color:#FFD8CE}
+.program-how-step h4{font-size:1rem;margin-bottom:5px}
+.program-how-step p{font-size:.8rem;color:#5A6B7A;max-width:190px;margin:0 auto}
+@media(max-width:1024px){.programs-premium-grid{grid-template-columns:repeat(2,1fr)}.programs-premium-hero-grid{grid-template-columns:1fr 1fr}.program-first1000-grid{grid-template-columns:1fr}.program-dayline{margin-top:10px}}
+@media(max-width:700px){.programs-premium-hero-grid{grid-template-columns:1fr;gap:24px}.programs-premium-image img{height:280px}.programs-premium-title{font-size:2.2rem}.programs-premium-grid{grid-template-columns:1fr}.program-first1000{padding:26px 18px}.program-dayline{grid-template-columns:repeat(2,1fr);gap:20px}.program-dayline:before{display:none}.program-impact-strip{grid-template-columns:1fr}.program-how-grid{grid-template-columns:1fr 1fr}.program-how-step{padding:5px 2px}}
+@media(max-width:430px){.program-how-grid{grid-template-columns:1fr}.program-premium-card-image{height:180px}}
+
+
+/* ===== PROGRAMS PAGE SAMPLE DESIGN ===== */
+.programs-cta-banner{margin-top:54px;border-radius:24px;overflow:hidden;background:linear-gradient(135deg,#E6F5F4,#FFF8F3);border:1px solid #D7ECEB;padding:28px 34px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.programs-cta-banner h3{font-family:'Montserrat',sans-serif;font-size:clamp(1.25rem,2.5vw,1.8rem);font-weight:800;color:#1E2A38;margin-bottom:5px}
+.programs-cta-banner p{color:#2BA3A0;font-size:.9rem;font-weight:700}
+.programs-cta-banner .btn{white-space:nowrap}
+@media(max-width:700px){.programs-cta-banner{padding:24px 20px;flex-direction:column;align-items:flex-start}.programs-cta-banner .btn{width:100%;justify-content:center}}
+
 /* About Us dropdown + responsive team */
 .about-dropdown{position:relative}
 .about-dropdown-menu{position:absolute;top:calc(100% + 12px);left:-12px;min-width:180px;background:#fff;border:1px solid #E5ECEC;border-radius:14px;padding:8px;box-shadow:0 12px 30px rgba(30,42,56,.12);opacity:0;visibility:hidden;transform:translateY(-6px);transition:all .2s ease;z-index:120}
@@ -292,6 +359,103 @@ input,select,textarea,button{font-family:inherit}
 @media(max-width:1024px){.nav-menu{position:absolute;top:100%;left:0;right:0;background:#fff;flex-direction:column;align-items:stretch;padding:18px;gap:4px;border-bottom:1px solid #E5ECEC;box-shadow:0 4px 14px rgba(30,42,56,.08);max-height:0;overflow:hidden;transition:max-height .4s ease}#navMenu.open{max-height:600px}#navMenu>li>a{padding:12px 14px !important;display:block}.menu-btn{display:block !important}.flagship-grid,.science-grid,.contact-grid,.program-modal-grid{grid-template-columns:1fr;gap:30px}.flagship-features{grid-template-columns:1fr}.toc-flow{grid-template-columns:repeat(2,1fr);gap:30px}.toc-arrow-desktop{display:none}.impact-stats{grid-template-columns:repeat(3,1fr);gap:24px}.impact-stat:nth-child(3)::after{display:none}}
 @media(max-width:768px){.btn{padding:12px 20px;font-size:.875rem}.modal-body{padding:20px 24px 24px}.modal-header{padding:18px 24px}.timeline-card-item{flex-direction:column;text-align:center}.toc-flow{grid-template-columns:1fr;gap:24px}.involve-cards-grid{grid-template-columns:1fr}.values-grid{grid-template-columns:repeat(2,1fr)}.involve-card{padding:20px 18px}.impact-inner{padding:60px 0 70px}.impact-stats{grid-template-columns:repeat(2,1fr);gap:30px 12px}.impact-stat::after{display:none !important}.impact-number{font-size:2.2rem}.impact-label{font-size:.68rem}.impact-subtitle{margin-bottom:40px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important}}
+
+/* ===== PROGRAMS PAGE ONLY — VISUAL REDESIGN ===== */
+.program-v3{background:#fff;color:#1E2A38;overflow:hidden}
+.program-v3-hero{background:linear-gradient(135deg,#F1FBFA 0%,#FFF8F3 100%);position:relative;overflow:hidden;padding:74px 0 46px}
+.program-v3-hero:before{content:"";position:absolute;width:430px;height:430px;border-radius:50%;right:-145px;top:-190px;background:rgba(43,163,160,.13)}
+.program-v3-hero:after{content:"";position:absolute;width:300px;height:300px;border-radius:50%;left:-170px;bottom:-190px;background:rgba(255,122,89,.10)}
+.program-v3-wrap{max-width:1200px;margin:0 auto;padding:0 28px;position:relative;z-index:2}
+.program-v3-hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.program-v3-kicker{display:flex;align-items:center;gap:12px;color:#2BA3A0;font-size:.8rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;margin-bottom:16px}
+.program-v3-kicker:before,.program-v3-kicker:after{content:"";height:2px;width:34px;background:#2BA3A0;border-radius:3px}
+.program-v3-title{font-family:'Montserrat',sans-serif;font-size:clamp(2.2rem,4.3vw,4rem);font-weight:800;line-height:1.08;color:#17384A;margin:0 0 20px;max-width:690px}
+.program-v3-copy{font-size:1.08rem;line-height:1.75;color:#58707B;max-width:650px}
+.program-v3-hero-art{position:relative}
+.program-v3-hero-photo{height:390px;width:100%;object-fit:cover;border-radius:34px;border:8px solid rgba(255,255,255,.9);box-shadow:0 24px 60px rgba(30,42,56,.14)}
+.program-v3-hero-badge{position:absolute;right:-14px;bottom:22px;background:#fff;border-radius:18px;padding:12px 16px;box-shadow:0 12px 32px rgba(30,42,56,.15);font-weight:800;color:#2BA3A0;font-size:.88rem}
+.program-v3-section{padding:66px 0}
+.program-v3-heading{text-align:center;max-width:760px;margin:0 auto 34px}
+.program-v3-heading .program-v3-kicker{justify-content:center;margin-bottom:12px}
+.program-v3-heading h2{font-size:clamp(1.9rem,3.5vw,3rem);margin-bottom:10px}
+.program-v3-heading p{color:#5A6B7A}
+.program-v3-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.program-v3-card{background:#fff;border:1px solid #E5ECEC;border-radius:18px;overflow:hidden;box-shadow:0 5px 20px rgba(30,42,56,.07);transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease}
+.program-v3-card:hover{transform:translateY(-7px);box-shadow:0 18px 42px rgba(30,42,56,.13);border-color:#B8E1DF}
+.program-v3-card-photo{height:185px;position:relative;overflow:hidden;background:#eaf7f6}
+.program-v3-card-photo:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.02) 25%,rgba(7,48,58,.34) 100%);pointer-events:none}
+.program-v3-card-photo img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform .55s ease,filter .55s ease}
+.program-v3-card:hover .program-v3-card-photo img{transform:scale(1.07);filter:saturate(1.05)}
+.program-v3-icon{position:absolute;left:18px;bottom:-19px;width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:#fff;box-shadow:0 8px 20px rgba(30,42,56,.15);font-size:1.35rem}
+.program-v3-card-body{padding:28px 19px 20px}
+.program-v3-card h3{font-size:1.05rem;margin-bottom:9px;color:#17384A}
+.program-v3-card p{font-size:.88rem;color:#5A6B7A;line-height:1.6;min-height:56px;margin-bottom:13px}
+.program-v3-tags{display:flex;flex-wrap:wrap;gap:7px 11px;margin-bottom:16px}
+.program-v3-tags span{font-size:.72rem;color:#526873;display:inline-flex;align-items:center;gap:4px}
+.program-v3-tags span:before{content:'✓';color:#2BA3A0;font-weight:900}
+.program-v3-more{display:inline-flex;align-items:center;gap:7px;background:#2BA3A0;color:#fff;border-radius:999px;padding:9px 17px;font-size:.83rem;font-weight:800;transition:.25s}
+.program-v3-more:hover{background:#1F8582;transform:translateY(-1px)}
+.program-v3-first{margin-top:20px;background:linear-gradient(135deg,#EEF9F8,#F8FCFB);border:1px solid #DCEFED;border-radius:25px;padding:30px;overflow:hidden}
+.program-v3-first-grid{display:grid;grid-template-columns:.8fr 1.7fr;gap:35px;align-items:center}
+.program-v3-first-kicker{font-size:.76rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:#2BA3A0;margin-bottom:7px}
+.program-v3-first h3{font-size:clamp(1.65rem,2.7vw,2.35rem);margin-bottom:12px}
+.program-v3-first p{font-size:.91rem;color:#5A6B7A;line-height:1.65}
+.program-v3-timeline{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;position:relative}
+.program-v3-timeline:before{content:"";position:absolute;left:10%;right:10%;top:38px;height:2px;background:#9BD6D4}
+.program-v3-stage{position:relative;z-index:1;text-align:center}
+.program-v3-stage-circle{width:72px;height:72px;margin:0 auto 9px;border-radius:50%;background:#fff;border:6px solid #E2F3F2;display:grid;place-items:center;font-size:1.65rem;box-shadow:0 7px 18px rgba(30,42,56,.08)}
+.program-v3-stage strong{display:block;font-size:.8rem;color:#17384A}
+.program-v3-stage small{display:block;font-size:.67rem;color:#5A6B7A;margin-top:2px}
+.program-v3-note{text-align:center;color:#2BA3A0;font-family:'Montserrat',sans-serif;font-size:.88rem;font-weight:800;margin-top:17px}
+.program-v3-impact{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:16px}
+.program-v3-impact-item{background:rgba(255,255,255,.78);border-radius:14px;padding:15px 17px;display:flex;align-items:center;gap:13px;border:1px solid rgba(219,237,235,.9)}
+.program-v3-impact-item:before{content:'✦';width:42px;height:42px;flex-shrink:0;border-radius:50%;display:grid;place-items:center;background:#E6F5F4;color:#2BA3A0;font-size:1.15rem}
+.program-v3-impact-item b{display:block;font-size:1.05rem;color:#1F8582}
+.program-v3-impact-item span{display:block;font-size:.72rem;color:#5A6B7A}
+.program-v3-how{padding:54px 0 8px}
+.program-v3-how-head{text-align:center;margin-bottom:30px}
+.program-v3-how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.program-v3-step{text-align:center;position:relative;padding:4px 12px}
+.program-v3-step:not(:last-child):after{content:'→';position:absolute;right:-12px;top:25px;color:#2BA3A0;font-size:1.4rem;font-weight:800}
+.program-v3-step-icon{width:48px;height:48px;margin:0 auto 10px;border-radius:50%;display:grid;place-items:center;background:#2BA3A0;color:#fff;font-size:1.2rem;box-shadow:0 7px 18px rgba(43,163,160,.2)}
+.program-v3-step:nth-child(2) .program-v3-step-icon,.program-v3-step:nth-child(4) .program-v3-step-icon{background:#FF7A59}
+.program-v3-step h4{font-size:1rem;margin-bottom:4px}
+.program-v3-step p{font-size:.79rem;line-height:1.5;color:#5A6B7A}
+.program-v3-cta{margin-top:50px;min-height:118px;border-radius:20px;background:linear-gradient(135deg,#EDF9F8,#FFF8F3);border:1px solid #DCEFED;display:flex;align-items:center;justify-content:center;gap:42px;padding:22px 30px;text-align:center}
+.program-v3-cta h3{font-size:1.35rem;color:#168B87;margin-bottom:4px}
+.program-v3-cta p{font-size:.82rem;color:#2BA3A0;font-weight:700}
+.program-v3-cta .btn{padding:12px 22px}
+@media(max-width:900px){.program-v3-hero-grid{grid-template-columns:1fr;gap:28px}.program-v3-hero-photo{height:330px}.program-v3-cards{grid-template-columns:repeat(2,1fr)}.program-v3-first-grid{grid-template-columns:1fr}.program-v3-how-grid{grid-template-columns:repeat(2,1fr)}.program-v3-step:nth-child(2):after{display:none}}
+@media(max-width:650px){.program-v3-wrap{padding:0 18px}.program-v3-hero{padding:58px 0 35px}.program-v3-title{font-size:2.15rem}.program-v3-copy{font-size:.95rem}.program-v3-hero-photo{height:270px;border-radius:24px}.program-v3-hero-badge{right:8px;bottom:12px;font-size:.76rem}.program-v3-section{padding:46px 0}.program-v3-cards{grid-template-columns:1fr;gap:18px}.program-v3-card-photo{height:200px}.program-v3-first{padding:23px 17px;border-radius:20px}.program-v3-timeline{grid-template-columns:repeat(2,1fr);gap:18px}.program-v3-timeline:before{display:none}.program-v3-stage:last-child{grid-column:1/-1}.program-v3-impact{grid-template-columns:1fr}.program-v3-how{padding-top:42px}.program-v3-how-grid{grid-template-columns:1fr 1fr;gap:24px 8px}.program-v3-step:not(:last-child):after{display:none}.program-v3-cta{margin-top:38px;flex-direction:column;gap:14px;padding:24px 17px}.program-v3-cta h3{font-size:1.15rem}.program-v3-cta .btn{width:100%}}
+@media(max-width:420px){.program-v3-how-grid{grid-template-columns:1fr}.program-v3-timeline{grid-template-columns:1fr 1fr}.program-v3-stage-circle{width:64px;height:64px}}
+.programs-page-navbar{background:#fff!important;box-shadow:0 2px 20px rgba(30,42,56,.08)!important}
+/* Program detail modal - scoped only to Programs page */
+.program-detail-overlay{position:fixed;inset:0;background:rgba(16,45,58,.62);backdrop-filter:blur(6px);z-index:99999;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;visibility:hidden;transition:.25s ease}
+.program-detail-overlay.is-open{opacity:1;visibility:visible}
+.program-detail-modal{width:min(760px,100%);max-height:90vh;overflow:auto;background:#fff;border-radius:28px;box-shadow:0 28px 90px rgba(0,0,0,.25);transform:translateY(18px) scale(.98);transition:.25s ease;position:relative}
+.program-detail-overlay.is-open .program-detail-modal{transform:translateY(0) scale(1)}
+.program-detail-top{padding:30px 34px 24px;background:linear-gradient(135deg,#eef9f8,#fff8f3);border-bottom:1px solid #e2eeee}
+.program-detail-kicker{color:#2ba3a0;font-size:.75rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px}
+.program-detail-title{font-family:'Montserrat',sans-serif;font-size:clamp(1.55rem,3vw,2.25rem);line-height:1.15;color:#17384a;margin:0 45px 10px 0}
+.program-detail-intro{color:#5a6b7a;line-height:1.7;margin:0;max-width:650px}
+.program-detail-close{position:absolute;right:20px;top:20px;width:40px;height:40px;border:0;border-radius:50%;background:#fff;color:#17384a;font-size:1.5rem;cursor:pointer;box-shadow:0 5px 16px rgba(30,42,56,.12)}
+.program-detail-body{padding:28px 34px 34px}
+.program-detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin:0 0 24px}
+.program-detail-block{background:#f8fbfb;border:1px solid #e4eeee;border-radius:16px;padding:18px}
+.program-detail-block h4{color:#17384a;font-size:1rem;margin:0 0 9px}
+.program-detail-block p{color:#5a6b7a;font-size:.9rem;line-height:1.65;margin:0}
+.program-detail-list{display:grid;gap:9px;margin:0;padding:0;list-style:none}
+.program-detail-list li{color:#526873;font-size:.88rem;line-height:1.5;padding-left:22px;position:relative}
+.program-detail-list li:before{content:'✓';position:absolute;left:0;top:0;color:#2ba3a0;font-weight:900}
+.program-detail-footer{display:flex;align-items:center;justify-content:space-between;gap:15px;padding-top:20px;border-top:1px solid #e5eeee}
+.program-detail-footer span{font-size:.78rem;color:#6a7c85}
+.program-detail-footer .program-v3-more{border:0;cursor:pointer}
+@media(max-width:650px){.program-detail-overlay{padding:12px}.program-detail-top{padding:25px 22px 20px}.program-detail-body{padding:22px}.program-detail-grid{grid-template-columns:1fr;gap:14px}.program-detail-title{margin-right:38px}.program-detail-footer{flex-direction:column;align-items:stretch}.program-detail-footer .program-v3-more{justify-content:center}}
+
+.programs-page-navbar .nav-link{color:#1E2A38!important}
+.programs-page-navbar .nav-link.active{color:#2BA3A0!important}
+.programs-page-navbar .nav-link.active::after{background:#2BA3A0}
+
 </style>
 </head>
 <body class="font-body text-charcoal bg-white">
@@ -383,6 +547,48 @@ const showResult = (id, html) => {
 
 const showError = (id, msg) => showResult(id, `<div class="tool-error">⚠️ ${escapeHtml(msg)}</div>`);
 
+// ============== PROGRAM DETAILS (Programs page only) ==============
+const programDetails = {
+  maternal: {title:'Maternal Health & Safe Motherhood', intro:'Supporting women through pregnancy, childbirth and the postpartum period with practical, respectful and community-focused care.', focus:'We focus on helping mothers access timely information, essential services and continued support across pregnancy, delivery and the postnatal period.', activities:['Antenatal Care (ANC) awareness and guidance','Birth preparedness and referral awareness','Postnatal Care (PNC) support and counselling','Maternal nutrition and danger-sign awareness','Family and community health education'], outcome:'Earlier awareness, better-informed families and stronger links between mothers and essential maternal health services.'},
+  nutrition: {title:'Child Nutrition & Growth', intro:'Helping children receive the nutrition, monitoring and care they need during the critical first 1,000 days.', focus:'The programme promotes healthy feeding practices, growth awareness and family-level counselling so caregivers can make informed decisions about a child’s nutrition and development.', activities:['Breastfeeding and complementary-feeding counselling','Nutrition awareness for parents and caregivers','Growth monitoring and early identification of concerns','Practical guidance on age-appropriate feeding','Community nutrition education'], outcome:'Stronger caregiver knowledge and earlier attention to nutrition and growth concerns during early childhood.'},
+  women: {title:'Women’s Health & Empowerment', intro:'Building awareness, confidence and access to essential health services so women can make informed choices about their health.', focus:'We combine health education with community outreach and empowerment-focused conversations that encourage women to seek timely care and participate in decisions affecting their wellbeing.', activities:['Women’s health awareness sessions','Community outreach and group discussions','Health-service access and referral awareness','Nutrition and lifestyle education','Women’s empowerment and confidence-building activities'], outcome:'Greater health awareness, improved confidence and stronger community support for women’s wellbeing.'},
+  immunization: {title:'Immunization & Preventive Care', intro:'Protecting children and communities through preventive health awareness, vaccination information and community-based support.', focus:'The programme helps families understand preventive care and the importance of timely vaccination while connecting communities with appropriate health services and awareness activities.', activities:['Vaccination awareness and counselling','Preventive-health education','Community health camps and outreach','Early identification and referral of concerns','Family-focused health awareness'], outcome:'Better-informed families and stronger preventive-health practices at the community level.'},
+  community: {title:'Community Health & Outreach', intro:'Bringing healthcare education, practical guidance and support closer to underserved communities.', focus:'Our grassroots approach starts with listening to communities, identifying priority needs and creating accessible opportunities for health education, counselling and referral.', activities:['Community health awareness sessions','Home visits and family-level counselling','Health camps and outreach activities','Referral and service-linkage support','Local community engagement and education'], outcome:'Health information and support become more accessible to families who may otherwise face barriers to care.'},
+  pcos: {title:'PCOS & Women’s Wellness', intro:'Supporting women with PCOS through awareness, lifestyle guidance, nutrition education and respectful counselling.', focus:'The initiative encourages women to understand PCOS-related health concerns and adopt practical, sustainable approaches to nutrition, lifestyle and wellbeing alongside appropriate professional care.', activities:['PCOS awareness and health education','Nutrition and healthy-lifestyle guidance','Counselling and behaviour-change support','Women’s wellness conversations','Encouragement to seek appropriate professional evaluation and care'], outcome:'Better awareness, healthier everyday practices and more informed conversations around women’s hormonal and overall wellbeing.'}
+};
+
+const openProgramDetail = (key) => {
+  const d = programDetails[key];
+  if (!d) return;
+  const existing = document.getElementById('program-detail-overlay');
+  if (existing) existing.remove();
+  const overlay = document.createElement('div');
+  overlay.id = 'program-detail-overlay';
+  overlay.className = 'program-detail-overlay';
+  overlay.innerHTML = `<div class="program-detail-modal" role="dialog" aria-modal="true" aria-labelledby="program-detail-title">
+    <button class="program-detail-close" type="button" aria-label="Close details" onclick="closeProgramDetail()">×</button>
+    <div class="program-detail-top"><div class="program-detail-kicker">Program Details</div><h2 id="program-detail-title" class="program-detail-title">${escapeHtml(d.title)}</h2><p class="program-detail-intro">${escapeHtml(d.intro)}</p></div>
+    <div class="program-detail-body">
+      <div class="program-detail-grid"><div class="program-detail-block"><h4>What We Do</h4><p>${escapeHtml(d.focus)}</p></div><div class="program-detail-block"><h4>Key Activities</h4><ul class="program-detail-list">${d.activities.map(x=>`<li>${escapeHtml(x)}</li>`).join('')}</ul></div></div>
+      <div class="program-detail-block"><h4>Our Intended Impact</h4><p>${escapeHtml(d.outcome)}</p></div>
+      <div class="program-detail-footer"><span>Her First 1000 Days Trust · Community-focused public health</span><button class="program-v3-more" type="button" onclick="closeProgramDetail()">Close Details ×</button></div>
+    </div></div>`;
+  overlay.addEventListener('click', e => { if (e.target === overlay) closeProgramDetail(); });
+  document.body.appendChild(overlay);
+  requestAnimationFrame(()=>overlay.classList.add('is-open'));
+  document.body.style.overflow='hidden';
+};
+const closeProgramDetail = () => {
+  const overlay = document.getElementById('program-detail-overlay');
+  if (!overlay) return;
+  overlay.classList.remove('is-open');
+  document.body.style.overflow='';
+  setTimeout(()=>overlay.remove(),250);
+};
+window.openProgramDetail = openProgramDetail;
+window.closeProgramDetail = closeProgramDetail;
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeProgramDetail(); });
+
 // ============== ROUTER ==============
 const navigate = (page, hash) => {
   if (!pages[page]) page = 'home';
@@ -394,6 +600,8 @@ const navigate = (page, hash) => {
   const al = document.querySelector(`.nav-link[data-page="${activePage}"]`);
   if (al) al.classList.add('active');
   app.innerHTML = pages[page];
+  const nb = document.getElementById('navbar');
+  if (nb) nb.classList.toggle('programs-page-navbar', page === 'programs');
   if (hash) setTimeout(() => {
     const el = document.querySelector(hash);
     if (el) window.scrollTo({ top: el.offsetTop - 80, behavior: 'smooth' });
@@ -1349,40 +1557,40 @@ home: `<div class="page">
 <!-- PROGRAMS -->
 <section class="py-16 sm:py-24 bg-cream" id="programs">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="text-center max-w-3xl mx-auto mb-12">
-<p class="text-coral font-semibold text-sm uppercase tracking-wider mb-3">Our Programs</p>
+<div class="programs-overview-head">
+<div class="programs-premium-kicker">Our Programs</div>
 <h2 class="font-heading font-bold text-3xl sm:text-4xl lg:text-5xl text-charcoal mb-4">Four Pillars of Care</h2>
-<p class="text-muted text-lg">Integrated, evidence-based programs that walk alongside families through every stage of the first 1,000 days.</p>
+<p>Integrated, evidence-based programs that walk alongside families through every stage of the first 1,000 days.</p>
 </div>
-<div class="programs-grid">
-<div class="program-card" data-modal="prog-maternal" tabindex="0" role="button">
-<div class="program-icon" aria-hidden="true">🤰</div>
-<h3>Maternal Care & Safe Motherhood</h3>
-<p>Antenatal checkups, nutrition supplements, and birth preparedness.</p>
-<span class="inline-flex items-center gap-1 text-teal text-sm font-semibold">Read More →</span>
+<div class="programs-premium-grid">
+<div class="program-premium-card" onclick="navigate('programs','#maternal')" role="button" tabindex="0">
+<div class="program-premium-card-image"><img src="https://static.wixstatic.com/media/1eb75c_5d7c424d86df4fd195cb8a93f275e442~mv2.png/v1/fill/w_1200,h_840,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/Pregnancy%20and%20delivery%20care.png" alt="Maternal care"><div class="program-premium-card-icon">🤰</div></div>
+<div class="program-premium-card-body"><h3>Maternal Care & Safe Motherhood</h3><p>Comprehensive antenatal support for expecting mothers.</p><div class="program-checks"><span>ANC</span><span>Nutrition</span><span>Birth Preparedness</span></div><span class="program-learn">Read More →</span></div>
 </div>
-<div class="program-card" data-modal="prog-newborn" tabindex="0" role="button">
-<div class="program-icon" aria-hidden="true">👶</div>
-<h3>Newborn Health & Survival</h3>
-<p>Immunization, breastfeeding support, and growth monitoring.</p>
-<span class="inline-flex items-center gap-1 text-teal text-sm font-semibold">Read More →</span>
+<div class="program-premium-card" onclick="navigate('programs','#newborn')" role="button" tabindex="0">
+<div class="program-premium-card-image"><img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?w=900&q=85" alt="Newborn health"><div class="program-premium-card-icon">👶</div></div>
+<div class="program-premium-card-body"><h3>Newborn Health & Survival</h3><p>Life-saving support during the most vulnerable period.</p><div class="program-checks"><span>Breastfeeding</span><span>Immunization</span><span>Growth</span></div><span class="program-learn">Read More →</span></div>
 </div>
-<div class="program-card" data-modal="prog-nutrition" tabindex="0" role="button">
-<div class="program-icon" aria-hidden="true">🥗</div>
-<h3>Nutrition & Toddler Development</h3>
-<p>Combating malnutrition through balanced diets and growth tracking.</p>
-<span class="inline-flex items-center gap-1 text-teal text-sm font-semibold">Read More →</span>
+<div class="program-premium-card" onclick="navigate('programs','#nutrition')" role="button" tabindex="0">
+<div class="program-premium-card-image"><img src="nutrition.png" alt="Nutrition and early childhood development"><div class="program-premium-card-icon">🥗</div></div>
+<div class="program-premium-card-body"><h3>Nutrition & Toddler Development</h3><p>Combating childhood malnutrition and supporting early development.</p><div class="program-checks"><span>Nutrition</span><span>Growth</span><span>ECD</span></div><span class="program-learn">Read More →</span></div>
 </div>
-<div class="program-card" data-modal="prog-community" tabindex="0" role="button">
-<div class="program-icon" aria-hidden="true">🏘️</div>
-<h3>Community Health & Education</h3>
-<p>Health worker training, ASHA partnerships, and awareness drives.</p>
-<span class="inline-flex items-center gap-1 text-teal text-sm font-semibold">Read More →</span>
+<div class="program-premium-card" onclick="navigate('programs','#community')" role="button" tabindex="0">
+<div class="program-premium-card-image"><img src="https://images.unsplash.com/photo-1759738101500-6d8d522b2681?auto=format&fit=crop&w=1200&q=88" alt="Community health"><div class="program-premium-card-icon">🏘️</div></div>
+<div class="program-premium-card-body"><h3>Community Health & Education</h3><p>Building sustainable local capacity through community action.</p><div class="program-checks"><span>ASHA Training</span><span>Awareness</span><span>Referrals</span></div><span class="program-learn">Read More →</span></div>
 </div>
 </div>
+<div class="program-first1000">
+<div class="program-first1000-grid">
+<div><div class="program-first1000-kicker">The First 1,000 Days</div><h3>A Healthy Start for a Brighter Future</h3><p>The first 1,000 days — from pregnancy to a child's 2nd birthday — are the most critical window for physical, cognitive, and emotional development.</p></div>
+<div><div class="program-dayline"><div class="program-day"><div class="program-day-dot">270</div><strong>Pregnancy</strong><small>Days 1–270</small></div><div class="program-day"><div class="program-day-dot">365</div><strong>Birth to 1 Year</strong><small>Days 271–635</small></div><div class="program-day"><div class="program-day-dot">365</div><strong>1 to 2 Years</strong><small>Days 636–1000</small></div><div class="program-day"><div class="program-day-dot">1K</div><strong>Every Day</strong><small>Shapes a lifetime</small></div></div><div class="program-days-note">Every day in the first 1,000 days shapes a lifetime.</div></div>
+</div>
+<div class="program-impact-strip"><div class="program-impact-item"><b>1,000 Days</b><span>Critical Window</span></div><div class="program-impact-item"><b>3 Stages</b><span>Pregnancy • Infancy • Early Childhood</span></div><div class="program-impact-item"><b>Community First</b><span>Grassroots Approach</span></div></div>
+</div>
+<div class="program-how"><div class="program-how-head"><div class="programs-premium-kicker">How We Work</div><h3 class="font-heading font-bold text-2xl sm:text-3xl text-charcoal">From evidence to lasting impact</h3></div><div class="program-how-grid"><div class="program-how-step"><div class="program-how-icon">⌕</div><h4>Identify</h4><p>Find the most vulnerable families and communities.</p></div><div class="program-how-step"><div class="program-how-icon">▣</div><h4>Educate</h4><p>Spread awareness and build knowledge.</p></div><div class="program-how-step"><div class="program-how-icon">♥</div><h4>Support</h4><p>Provide healthcare, nutrition and guidance.</p></div><div class="program-how-step"><div class="program-how-icon">↗</div><h4>Measure Impact</h4><p>Track progress and create lasting change.</p></div></div></div>
+<div class="text-center mt-10"><a href="#" onclick="navigate('programs');return false" class="btn btn-primary">Explore All Programs →</a></div>
 </div>
 </section>
-
 <!-- INTERACTIVE TOOLS -->
 <section class="py-16 sm:py-24 bg-white" id="tools">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1773,36 +1981,42 @@ team: `<div class="page">
 ${footer}</div>`,
 
 // ===== PROGRAMS =====
-programs: `<div class="page">
-<section class="page-hero"><div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><p class="text-coral font-semibold text-sm uppercase tracking-wider mb-3">Our Programs</p><h1 class="font-heading font-bold text-4xl sm:text-5xl mb-4">Four Integrated Programs</h1><p class="text-white/90 text-lg max-w-2xl">Walking alongside families from conception to a child's 2nd birthday.</p></div></section>
-<section id="maternal" class="py-16 sm:py-20 bg-white"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="grid lg:grid-cols-2 gap-12 items-center">
-<div><span class="badge bg-coral/10 text-coral mb-4">Days 1-270</span><h2 class="font-heading font-bold text-3xl text-charcoal mb-4">Maternal Care</h2><p class="text-muted mb-6">Comprehensive antenatal support for expecting mothers.</p>
-<ul style="list-style:none;display:grid;gap:10px;margin-bottom:20px" class="text-muted"><li>✓ Monthly antenatal checkup camps</li><li>✓ Iron, folic acid & calcium</li><li>✓ High-risk pregnancy identification</li><li>✓ Birth preparedness counseling</li></ul>
-<a href="#" onclick="navigate('donate');return false" class="btn btn-coral">Support This Program</a></div>
-<div class="rounded-3xl overflow-hidden shadow-xl"><img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800&q=80" alt="" class="w-full h-full object-cover"></div>
+programs: `<div class="page program-v3">
+<section class="program-v3-hero"><div class="program-v3-wrap"><div class="program-v3-hero-grid">
+<div><div class="program-v3-kicker">Our Programs</div><h1 class="program-v3-title">Turning evidence into action for healthier mothers, stronger families and thriving children.</h1><p class="program-v3-copy">We work at the grassroots level to ensure that every mother and child gets the care, nutrition and support they need — especially in the critical first 1,000 days of life.</p></div>
+<div class="program-v3-hero-art"><img class="program-v3-hero-photo" src="https://images.unsplash.com/photo-1615473986468-e3ebf02e9e3d?auto=format&fit=crop&w=1200&q=88" alt="Mother and child"><div class="program-v3-hero-badge">Healthy beginnings. Brighter futures.</div></div>
 </div></div></section>
-<section id="newborn" class="py-16 sm:py-20 bg-cream"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="grid lg:grid-cols-2 gap-12 items-center">
-<div class="rounded-3xl overflow-hidden shadow-xl"><img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?w=800&q=80" alt="" class="w-full h-full object-cover"></div>
-<div><span class="badge bg-teal/10 text-teal mb-4">Birth to 1 Year</span><h2 class="font-heading font-bold text-3xl text-charcoal mb-4">Newborn Health</h2><p class="text-muted mb-6">Life-saving interventions during the most vulnerable period.</p>
-<ul style="list-style:none;display:grid;gap:10px;margin-bottom:20px" class="text-muted"><li>✓ Home-based newborn care visits</li><li>✓ Exclusive breastfeeding support</li><li>✓ Complete immunization</li><li>✓ Kangaroo Mother Care</li></ul>
-<a href="#" onclick="navigate('donate');return false" class="btn btn-primary">Support This Program</a></div>
-</div></div></section>
-<section id="nutrition" class="py-16 sm:py-20 bg-white"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="grid lg:grid-cols-2 gap-12 items-center">
-<div><span class="badge bg-success/10 text-success mb-4">1 to 2 Years</span><h2 class="font-heading font-bold text-3xl text-charcoal mb-4">Nutrition & ECD</h2><p class="text-muted mb-6">Combating childhood malnutrition.</p>
-<ul style="list-style:none;display:grid;gap:10px;margin-bottom:20px" class="text-muted"><li>✓ Complementary feeding demos</li><li>✓ Growth monitoring</li><li>✓ Play & stimulation sessions</li><li>✓ Micronutrient supplementation</li></ul>
-<a href="#" onclick="navigate('donate');return false" class="btn btn-coral" style="background:#3DA47A">Support This Program</a></div>
-<div class="rounded-3xl overflow-hidden shadow-xl"><img src='nutrition.png' alt="" class="w-full h-full object-cover"></div>
-</div></div></section>
-<section id="community" class="py-16 sm:py-20 bg-cream"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="grid lg:grid-cols-2 gap-12 items-center">
-<div class="rounded-3xl overflow-hidden shadow-xl"><img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?w=800&q=80" alt="" class="w-full h-full object-cover"></div>
-<div><span class="badge bg-coral/10 text-coral mb-4">Community-wide</span><h2 class="font-heading font-bold text-3xl text-charcoal mb-4">Community Health</h2><p class="text-muted mb-6">Building sustainable local capacity.</p>
-<ul style="list-style:none;display:grid;gap:10px;margin-bottom:20px" class="text-muted"><li>✓ ASHA worker training</li><li>✓ Father engagement</li><li>✓ Hygiene awareness</li><li>✓ PHC referral linkages</li></ul>
-<a href="#" onclick="navigate('donate');return false" class="btn btn-coral">Support This Program</a></div>
-</div></div></section>
+
+<section class="program-v3-section"><div class="program-v3-wrap">
+<div class="program-v3-heading"><div class="program-v3-kicker">Our Focus Areas</div><h2>Programs That Make a Difference</h2><p>Integrated, evidence-based programs supporting mothers, children and communities at every stage of the first 1,000 days.</p></div>
+<div class="program-v3-cards">
+<div class="program-v3-card"><div class="program-v3-card-photo"><img loading="lazy" src="https://static.wixstatic.com/media/1eb75c_5d7c424d86df4fd195cb8a93f275e442~mv2.png/v1/fill/w_1200,h_840,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/Pregnancy%20and%20delivery%20care.png" alt="Indian mother receiving pregnancy care from a doctor"><div class="program-v3-icon">🤰</div></div><div class="program-v3-card-body"><h3>Maternal Health &amp; Safe Motherhood</h3><p>Supporting women through pregnancy, childbirth and the postpartum period.</p><div class="program-v3-tags"><span>ANC</span><span>PNC</span><span>Health Awareness</span></div><a class="program-v3-more" href="#" onclick="openProgramDetail('maternal');return false">Learn More →</a></div></div>
+<div class="program-v3-card"><div class="program-v3-card-photo"><img loading="lazy" src="https://www.pravahjharkhand.org/images/POSHAN/_DSC9201.jpg" alt="Indian mother feeding a child nutritious food"><div class="program-v3-icon">🥣</div></div><div class="program-v3-card-body"><h3>Child Nutrition &amp; Growth</h3><p>Helping children get the nutrition and care they need during the critical first 1,000 days.</p><div class="program-v3-tags"><span>Nutrition</span><span>Growth Monitoring</span><span>Counselling</span></div><a class="program-v3-more" href="#" onclick="openProgramDetail('nutrition');return false">Learn More →</a></div></div>
+<div class="program-v3-card"><div class="program-v3-card-photo"><img loading="lazy" src="https://www.smilefoundationindia.org/wp-content/uploads/2023/07/9-scaled.jpg" alt="Indian women participating in a community health session"><div class="program-v3-icon">♀</div></div><div class="program-v3-card-body"><h3>Women’s Health &amp; Empowerment</h3><p>Building awareness, confidence and access to essential health services.</p><div class="program-v3-tags"><span>Awareness</span><span>Community Outreach</span><span>Empowerment</span></div><a class="program-v3-more" href="#" onclick="openProgramDetail('women');return false">Learn More →</a></div></div>
+<div class="program-v3-card"><div class="program-v3-card-photo"><img loading="lazy" src="https://www.undp.org/sites/g/files/zskgke326/files/2026-04/dsc_2493.jpg" alt="Indian mother and child during vaccination"><div class="program-v3-icon">🛡️</div></div><div class="program-v3-card-body"><h3>Immunization &amp; Preventive Care</h3><p>Protecting children and communities from preventable diseases.</p><div class="program-v3-tags"><span>Vaccination</span><span>Health Camps</span><span>Awareness</span></div><a class="program-v3-more" href="#" onclick="openProgramDetail('immunization');return false">Learn More →</a></div></div>
+<div class="program-v3-card"><div class="program-v3-card-photo"><img loading="lazy" src="https://images.unsplash.com/photo-1759738101500-6d8d522b2681?auto=format&fit=crop&w=1200&q=88" alt="Indian women and children in a rural community"><div class="program-v3-icon">👥</div></div><div class="program-v3-card-body"><h3>Community Health &amp; Outreach</h3><p>Bringing healthcare, education and support to underserved communities.</p><div class="program-v3-tags"><span>Health Camps</span><span>Home Visits</span><span>Education</span></div><a class="program-v3-more" href="#" onclick="openProgramDetail('community');return false">Learn More →</a></div></div>
+<div class="program-v3-card"><div class="program-v3-card-photo"><img loading="lazy" src="https://images.unsplash.com/photo-1650116384974-a8e4ae69c884?auto=format&fit=crop&w=1200&q=88" alt="Indian woman practicing yoga and wellness"><div class="program-v3-icon">🌿</div></div><div class="program-v3-card-body"><h3>PCOS &amp; Women’s Wellness</h3><p>Supporting women with PCOS through awareness, lifestyle guidance and care.</p><div class="program-v3-tags"><span>Counselling</span><span>Nutrition</span><span>Lifestyle Support</span></div><a class="program-v3-more" href="#" onclick="openProgramDetail('pcos');return false">Learn More →</a></div></div>
+</div>
+
+<div class="program-v3-first"><div class="program-v3-first-grid"><div><div class="program-v3-first-kicker">The First 1,000 Days</div><h3>A Healthy Start for a Brighter Future</h3><p>The first 1,000 days — from conception to age 2 — are the most critical for a child’s physical, mental and emotional development.</p></div><div><div class="program-v3-timeline">
+<div class="program-v3-stage"><div class="program-v3-stage-circle">🤰</div><strong>Pregnancy</strong><small>0–9 months</small></div>
+<div class="program-v3-stage"><div class="program-v3-stage-circle">👶</div><strong>Birth</strong><small>0–6 months</small></div>
+<div class="program-v3-stage"><div class="program-v3-stage-circle">🍼</div><strong>6 Months</strong><small>6–12 months</small></div>
+<div class="program-v3-stage"><div class="program-v3-stage-circle">🌱</div><strong>1 Year</strong><small>12–18 months</small></div>
+<div class="program-v3-stage"><div class="program-v3-stage-circle">🌼</div><strong>2 Years</strong><small>18–24 months</small></div>
+</div><div class="program-v3-note">Every day in the first 1,000 days shapes a lifetime.</div></div></div>
+<div class="program-v3-impact"><div class="program-v3-impact-item"><div><b>1,000 Days</b><span>Critical Window</span></div></div><div class="program-v3-impact-item"><div><b>3 Stages</b><span>Pregnancy • Infancy • Early Childhood</span></div></div><div class="program-v3-impact-item"><div><b>Community First</b><span>Grassroots Approach</span></div></div></div>
+</div>
+
+<div class="program-v3-how"><div class="program-v3-how-head"><div class="program-v3-kicker" style="justify-content:center">How We Work</div><h3>From evidence to lasting impact</h3></div><div class="program-v3-how-grid">
+<div class="program-v3-step"><div class="program-v3-step-icon">⌕</div><h4>Identify</h4><p>We find the most vulnerable families and communities.</p></div>
+<div class="program-v3-step"><div class="program-v3-step-icon">▣</div><h4>Educate</h4><p>We spread awareness and build knowledge.</p></div>
+<div class="program-v3-step"><div class="program-v3-step-icon">♥</div><h4>Support</h4><p>We provide healthcare, nutrition and continuous guidance.</p></div>
+<div class="program-v3-step"><div class="program-v3-step-icon">↗</div><h4>Measure Impact</h4><p>We track progress and create lasting change.</p></div>
+</div></div>
+
+<div class="program-v3-cta"><div><h3>Together, we can build healthier futures for mothers and children.</h3><p>Small steps. Big change.</p></div><a href="#" onclick="navigate('donate');return false" class="btn btn-coral">Support Our Work →</a></div>
+</div></section>
 ${footer}</div>`,
 
 // ===== HORMONE KI SUNO - UPDATED =====
