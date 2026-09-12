@@ -1326,24 +1326,102 @@ const setFreq = (btn) => {
   btn.classList.add('active');
 };
 
-const processDonation = () => {
+const processDonation = async () => {
   const name = document.getElementById('d-name')?.value.trim();
   const email = document.getElementById('d-email')?.value.trim();
   const phone = document.getElementById('d-phone')?.value.trim();
+  const donateButton = document.querySelector('button[onclick="processDonation()"]');
+  const originalButtonText = donateButton?.innerHTML;
+
   if (!name || !email || !phone) { alert('Please fill in all required fields.'); return; }
-  if (donateAmount < 100) { alert('Minimum donation is ₹100.'); return; }
-  if (typeof Razorpay === 'undefined') { alert('Payment gateway loading...'); return; }
-  const options = {
-    key: 'rzp_test_XXXXXXXXXXXXX',
-    amount: donateAmount * 100,
-    currency: 'INR',
-    name: 'Her First 1000 Days Trust',
-    description: 'Donation',
-    handler: r => alert('✅ Thank you, ' + name + '!\nPayment ID: ' + r.razorpay_payment_id + '\n80G receipt will be emailed within 24 hours.'),
-    prefill: { name, email, contact: phone },
-    theme: { color: '#2BA3A0' }
-  };
-  new Razorpay(options).open();
+  if (!Number.isInteger(donateAmount) || donateAmount < 100) { alert('Minimum donation is ₹100.'); return; }
+  if (typeof Razorpay === 'undefined') { alert('Payment gateway loading... Please try again.'); return; }
+
+  try {
+    if (donateButton) {
+      donateButton.disabled = true;
+      donateButton.innerHTML = '⏳ Opening secure payment...';
+    }
+
+    const orderResponse = await fetch('/api/create-order', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ amount: donateAmount * 100 })
+    });
+
+    const orderData = await orderResponse.json().catch(() => ({}));
+    if (!orderResponse.ok || !orderData.order_id) {
+      throw new Error(orderData.error || 'Could not create the payment order.');
+    }
+
+    const configResponse = await fetch('/api/config');
+    const config = await configResponse.json().catch(() => ({}));
+    if (!configResponse.ok || !config.key_id) {
+      throw new Error(config.error || 'Razorpay configuration is unavailable.');
+    }
+
+    const rzp = new Razorpay({
+      key: config.key_id,
+      amount: orderData.amount,
+      currency: orderData.currency || 'INR',
+      name: 'Her First 1000 Days Trust',
+      description: 'Donation',
+      order_id: orderData.order_id,
+      prefill: { name, email, contact: phone },
+      theme: { color: '#2BA3A0' },
+      handler: async (response) => {
+        try {
+          const verifyResponse = await fetch('/api/verify-payment', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(response)
+          });
+          const verifyData = await verifyResponse.json().catch(() => ({}));
+
+          if (!verifyResponse.ok || !verifyData.success) {
+            throw new Error(verifyData.error || 'Payment verification failed.');
+          }
+
+          alert('✅ Thank you, ' + name + '!\nPayment ID: ' + response.razorpay_payment_id + '\nYour payment has been verified successfully.');
+        } catch (error) {
+          console.error(error);
+          alert('Payment was received, but verification could not be completed. Please contact us with Payment ID: ' + response.razorpay_payment_id);
+        } finally {
+          if (donateButton) {
+            donateButton.disabled = false;
+            donateButton.innerHTML = originalButtonText;
+          }
+        }
+      },
+      modal: {
+        ondismiss: () => {
+          if (donateButton) {
+            donateButton.disabled = false;
+            donateButton.innerHTML = originalButtonText;
+          }
+          alert('Payment cancelled. No amount was charged by this checkout.');
+        }
+      }
+    });
+
+    rzp.on('payment.failed', (response) => {
+      console.error('Razorpay payment failed:', response.error);
+      if (donateButton) {
+        donateButton.disabled = false;
+        donateButton.innerHTML = originalButtonText;
+      }
+      alert('❌ Payment failed: ' + (response.error?.description || 'Please try again.'));
+    });
+
+    rzp.open();
+  } catch (error) {
+    console.error('Donation error:', error);
+    alert('❌ ' + (error.message || 'Unable to start payment. Please try again.'));
+    if (donateButton) {
+      donateButton.disabled = false;
+      donateButton.innerHTML = originalButtonText;
+    }
+  }
 };
 
 const showInvolveTab = (tab) => {
