@@ -25,7 +25,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <script>
 tailwind.config={theme:{extend:{colors:{teal:{DEFAULT:'#2BA3A0',dark:'#1F8582',light:'#E6F5F4'},coral:{DEFAULT:'#FF7A59',soft:'#FFB8A3'},cream:'#FFF8F3',charcoal:'#1E2A38',muted:'#5A6B7A',border:'#E5ECEC',success:'#3DA47A'},fontFamily:{heading:['Montserrat','sans-serif'],body:['Inter','sans-serif']}}}}
 </script>
@@ -1327,20 +1326,6 @@ const setFreq = (btn) => {
 };
 
 const processDonation = () => {
-  const name = document.getElementById('d-name')?.value.trim();
-  const email = document.getElementById('d-email')?.value.trim();
-  const phone = document.getElementById('d-phone')?.value.trim();
-
-  if (!name || !email || !phone) {
-    alert('Please fill in all required fields.');
-    return;
-  }
-
-  if (!Number.isInteger(donateAmount) || donateAmount < 100) {
-    alert('Minimum donation is ₹100.');
-    return;
-  }
-
   window.location.href = 'https://rzp.io/rzp/herfirst';
 };
 
@@ -2372,41 +2357,34 @@ ${footer}</div>`,
 
 // ===== DONATE =====
 donate: `<div class="page">
-<section class="pt-32 pb-12 bg-gradient-to-br from-cream to-white"><div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center"><p class="text-coral font-semibold text-sm uppercase tracking-wider mb-3">Donate</p><h1 class="font-heading font-bold text-4xl sm:text-5xl text-charcoal mb-4">Your Gift Becomes Their <span class="text-teal">First 1,000 Days</span></h1><p class="text-muted text-lg">Every rupee funds nutrition kits. 50% tax exemption under 80G.</p></div></section>
-<section class="py-12 bg-white"><div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="flex justify-center mb-8"><div class="inline-flex bg-cream rounded-full p-1.5">
-<button class="freq-toggle active px-6 py-2.5 rounded-full font-semibold text-sm" onclick="setFreq(this)">One-Time</button>
-<button class="freq-toggle px-6 py-2.5 rounded-full font-semibold text-sm relative" onclick="setFreq(this)">Monthly <span class="absolute -top-2 -right-2 bg-coral text-white text-[10px] px-1.5 py-0.5 rounded-full">Best</span></button>
-</div></div>
-<div class="grid sm:grid-cols-2 gap-4 mb-8">
-<button class="tier-card card text-left border-2 border-transparent" onclick="selectTier(1000,this)"><div class="flex items-start justify-between mb-2"><div class="font-heading font-bold text-2xl text-charcoal">₹1,000</div><span class="text-2xl">🩺</span></div><p class="text-sm font-semibold text-teal mb-1">Maternal Care Kit</p></button>
-<button class="tier-card card text-left border-2 border-transparent" onclick="selectTier(3000,this)"><div class="flex items-start justify-between mb-2"><div class="font-heading font-bold text-2xl text-charcoal">₹3,000</div><span class="text-2xl">🤰</span></div><p class="text-sm font-semibold text-teal mb-1">Complete ANC Support</p></button>
-<button class="tier-card card text-left border-2 border-transparent" onclick="selectTier(5000,this)"><div class="flex items-start justify-between mb-2"><div class="font-heading font-bold text-2xl text-charcoal">₹5,000</div><span class="text-2xl">👶</span></div><p class="text-sm font-semibold text-teal mb-1">Newborn Care Package</p></button>
-<button class="tier-card card text-left border-2 border-transparent" onclick="selectTier(10000,this)"><div class="flex items-start justify-between mb-2"><div class="font-heading font-bold text-2xl text-charcoal">₹10,000</div><span class="text-2xl">🥗</span></div><p class="text-sm font-semibold text-teal mb-1">Nutrition Center</p></button>
+<section class="pt-32 pb-16 bg-gradient-to-br from-cream to-white overflow-hidden"><div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+<p class="text-teal font-semibold text-sm uppercase tracking-wider mb-4">Donate</p>
+<h1 class="font-heading font-bold text-4xl sm:text-5xl lg:text-6xl text-charcoal mb-5 leading-tight">Your Gift Becomes Their <span class="text-teal">First 1,000 Days</span></h1>
+<p class="text-muted text-lg sm:text-xl max-w-3xl mx-auto">Your contribution helps support maternal, newborn, child and women’s health in underserved communities.</p>
+</div></section>
+
+<section class="py-14 sm:py-16 bg-white"><div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="card !p-8 sm:!p-10 text-center shadow-lg border border-border">
+<div class="text-4xl mb-4">❤️</div>
+<h2 class="font-heading font-bold text-2xl sm:text-3xl text-charcoal mb-3">Make a Difference Today</h2>
+<p class="text-muted text-base sm:text-lg mb-8">Choose your donation amount and enter your details securely on the Razorpay payment page.</p>
+<button type="button" onclick="processDonation()" class="btn btn-coral w-full text-lg !py-4 mb-8">❤️ Donate Securely <span class="ml-1">→</span></button>
+<div class="grid sm:grid-cols-3 gap-5 text-center text-sm text-muted">
+<div><div class="text-xl mb-1">🔒</div><strong class="block text-charcoal">Secure Payment</strong><span>256-bit SSL Encrypted</span></div>
+<div><div class="text-xl mb-1">💳</div><strong class="block text-charcoal">Powered by Razorpay</strong><span>Safe &amp; Trusted</span></div>
+<div><div class="text-xl mb-1">📄</div><strong class="block text-charcoal">80G Eligible</strong><span>Donation Receipt</span></div>
 </div>
-<div class="card mb-8"><label class="form-label">Or enter a custom amount</label><div class="relative"><span class="absolute left-4 top-1/2 -translate-y-1/2 text-2xl font-bold text-muted">₹</span><input type="number" id="custom-amount" min="100" placeholder="500" class="form-input pl-10 text-2xl font-bold" oninput="setCustomAmount(this.value)"></div></div>
-<div class="card mb-6"><h3 class="font-heading font-bold text-lg mb-4">Your Details</h3><div class="grid sm:grid-cols-2 gap-4">
-<div><label class="form-label">Full Name <span class="req">*</span></label><input type="text" id="d-name" required class="form-input" placeholder="As on PAN"></div>
-<div><label class="form-label">Email <span class="req">*</span></label><input type="email" id="d-email" required class="form-input"></div>
-<div><label class="form-label">Phone <span class="req">*</span></label><input type="tel" id="d-phone" required class="form-input"></div>
-<div><label class="form-label">PAN (for 80G)</label><input type="text" id="d-pan" class="form-input" maxlength="10" style="text-transform: uppercase" placeholder="Optional"></div>
-</div></div>
-<button onclick="processDonation()" class="btn btn-coral w-full text-lg !py-4 mb-6">❤️ Donate Securely</button>
-<div class="flex flex-wrap justify-center items-center gap-6 text-xs text-muted">
-<div>🔒 256-bit SSL Encrypted</div>
-<div>💳 Powered by Razorpay</div>
-<div>📄 80G Receipt in 24 hrs</div>
 </div>
 </div></section>
-<section class="py-16 bg-cream"><div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-<h2 class="font-heading font-bold text-2xl sm:text-3xl text-charcoal text-center mb-8">Where Your Money Goes</h2>
+
+<section class="py-16 sm:py-20 bg-cream"><div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+<h2 class="font-heading font-bold text-2xl sm:text-3xl text-charcoal text-center mb-10">Where Your Money Goes</h2>
 <div class="grid md:grid-cols-3 gap-6">
-<div class="card text-center"><div class="text-4xl mb-3">85%</div><p class="font-semibold text-charcoal mb-1">Direct Programs</p><p class="text-muted text-sm">Nutrition, health camps, training, medicines</p></div>
-<div class="card text-center"><div class="text-4xl mb-3">10%</div><p class="font-semibold text-charcoal mb-1">Health Workers</p><p class="text-muted text-sm">ASHA training and last-mile delivery</p></div>
-<div class="card text-center"><div class="text-4xl mb-3">5%</div><p class="font-semibold text-charcoal mb-1">Operations</p><p class="text-muted text-sm">Compliance, audit, reporting</p></div>
+<div class="card text-center !p-8"><div class="text-4xl font-heading font-bold text-teal mb-3">85%</div><p class="font-semibold text-charcoal mb-1">Direct Programs</p><p class="text-muted text-sm">Nutrition, health camps, training, medicines</p></div>
+<div class="card text-center !p-8"><div class="text-4xl font-heading font-bold text-coral mb-3">10%</div><p class="font-semibold text-charcoal mb-1">Health Workers</p><p class="text-muted text-sm">ASHA training and last-mile delivery</p></div>
+<div class="card text-center !p-8"><div class="text-4xl font-heading font-bold text-teal mb-3">5%</div><p class="font-semibold text-charcoal mb-1">Operations</p><p class="text-muted text-sm">Compliance, audit, reporting</p></div>
 </div></div></section>
 ${footer}</div>`
-};
 
 // ============== INITIALIZE ==============
 const initialPage = location.hash.replace('#','') || 'home';
